@@ -1,6 +1,6 @@
 # Evidence Provenance Confidence/Context (EPC) Working Group
 
-This is the project coordination repository of the Translator *Evidence Provenance Confidence (& possibly Context) Modelling Working Group*. The [EPC Working Group Charter](https://docs.google.com/document/d/1hV03ewzQbEfja9emf0foIQU_t9kuJp_McxhWVPbM4CE) defines the intended scope of concerns.
+This is the project coordination repository of the Translator *Evidence Provenance Confidence (& possibly Context) Modelling Working Group*. The [EPC Working Group Charter](https://docs.google.com/document/d/1hV03ewzQbEfja9emf0foIQU_t9kuJp_McxhWVPbM4CE) defines the group's mission and an [EPC Issue Staging and Discussion](https://docs.google.com/document/d/11HuUMw3u9uf1RPa3FbFgSgbY47hDxAFWywbCYVxUMLI/edit#heading=h.prvdzh67lgo) defines and elaborates the technical scope ofconcerns.
 
 ## Meetings
 
@@ -9,7 +9,6 @@ This is the project coordination repository of the Translator *Evidence Provenan
 
 # Resources
 
-- [Overview](https://docs.google.com/document/d/11HuUMw3u9uf1RPa3FbFgSgbY47hDxAFWywbCYVxUMLI)
 - [Translator Gdrive folder for EPC WG](https://drive.google.com/drive/u/0/folders/1LSNkQ6iqKfVdjirjcCW-0sRj83qCY6Xw)
 
 ## Requirements Gathering
