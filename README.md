@@ -1,6 +1,6 @@
 # Evidence Provenance Confidence/Context (EPC) Working Group
 
-This is the project coordination repository of the Translator *Evidence Provenance Confidence (& possibly Context) Modelling Working Group*.
+This is the project coordination repository of the Translator *Evidence Provenance Confidence (& possibly Context) Modelling Working Group*. The [EPC Working Group Charter](https://docs.google.com/document/d/1hV03ewzQbEfja9emf0foIQU_t9kuJp_McxhWVPbM4CE) defines the intended scope of concerns.
 
 ## Meetings
 
