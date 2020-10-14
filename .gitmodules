@@ -1,0 +1,3 @@
+[submodule "biolink"]
+	path = biolink
+	url = https://github.com/NCATSTranslator/epcc-biolink-model-additions.git
