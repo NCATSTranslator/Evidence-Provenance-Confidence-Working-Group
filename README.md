@@ -19,6 +19,14 @@ This is the project coordination repository of the Translator *Evidence Provenan
 
 - July SEPIO Presentation ([slides](https://docs.google.com/presentation/d/1W_VWV5oMplK9Wz2XBXdZNLHPKcmAC3CR-3P6JwYAJMw/edit#slide=id.g7393cc5b77_0_479))
 
+## Biolink Model Integration
+
+For convenience of access, this project has a dedicated EPPC fork of the Biolink Model injected into this project as a Git `submodule`  in the *biolink* folder of the project.  The basic idea here is that we will make judicious EPCC revisions to this forked copy of the Biolink model,f or pull request merging into the main Biolink Model, once those changes are ready to be used by the Translator community.
+
+## TRAPI Integration
+
+A similar controlled EPCC integration process as with the Biolink Model will likely be initiated for TRAPI as well (TBA).
+
 ## Use Cases for Evidence Provenance Confidence Context (EPCC)
 
 1. A user conducts an initial Translator ARS query which returns a non-empty knowledge graph result. They wish to view all of the available EPCC information associated with a specific edge assertion in the graph, so triggers a second the ARS to retrieve all said EPCC information in a second query to the graph, using some suitable edge identifier.
