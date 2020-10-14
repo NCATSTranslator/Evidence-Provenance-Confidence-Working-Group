@@ -1,6 +1,6 @@
-# Evidence Provenance Confidence Context (EPCC) Modelling Working Group
+# Evidence Provenance Confidence/Context (EPC) Working Group
 
-This is the project coordination repository of the Translator *Evidence Provenance Confidence Context Modelling Working Group*.
+This is the project coordination repository of the Translator *Evidence Provenance Confidence (& possibly Context) Modelling Working Group*.
 
 ## Meetings
 
@@ -25,13 +25,13 @@ For convenience of access, this project has a dedicated EPPC fork of the Biolink
 
 ## TRAPI Integration
 
-A similar controlled EPCC integration process as with the Biolink Model will likely be initiated for TRAPI as well (TBA).
+A similar controlled EPC integration process as with the Biolink Model will likely be initiated for TRAPI as well (TBA).
 
 ## Use Cases
 
-1. A user conducts an initial Translator ARS query which returns a non-empty knowledge graph result. They wish to view all of the available EPCC information associated with a specific edge assertion in the graph, so triggers a second the ARS to retrieve all said EPCC information in a second query to the graph, using some suitable edge identifier.
+1. A user conducts an initial Translator ARS query which returns a non-empty knowledge graph result. They wish to view all of the available EPC information associated with a specific edge assertion in the graph, so triggers a second the ARS to retrieve all said EPC information in a second query to the graph, using some suitable edge identifier.
 
     a) Variant of 1: user provides specific EPCC information filters to constrain the information returned to specific types.
-    b) Variant of 1 and 1a): the EPCC information returned default to 'shallow', 'breadth first', scope, so the user may ask for additional details about one or more specific components of the information returned (e.g. access details about underlying "evidence information objects" cited within the EPCC).
+    b) Variant of 1 and 1a): the EPCC information returned default to 'shallow', 'breadth first', scope, so the user may ask for additional details about one or more specific components of the information returned (e.g. access details about underlying "evidence information objects" cited within the EPC).
 
 
