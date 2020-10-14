@@ -7,9 +7,10 @@ This is the project coordination repository of the Translator *Evidence Provenan
 - [WG Running Agenda](https://docs.google.com/document/d/1CsDhRYOCL1FJMDntdSNkuXZa00IXYjnyLouyLXpb8M4)
 - September 2020 Relay Provenance Session ([slides](https://docs.google.com/presentation/d/1NzpnX-ZafU72mwcDt4qsRsTlT97cl0EsjzS1CqmgmbY), [notes](https://docs.google.com/document/d/1-5gj4ynmeAep1TVS7QRmEZlbBoY465Buqtju5TxEZ1E))
 
-# Terms of Reference
+# Resources
 
 - [Overview](https://docs.google.com/document/d/11HuUMw3u9uf1RPa3FbFgSgbY47hDxAFWywbCYVxUMLI)
+- [Translator Gdrive folder for EPC WG](https://drive.google.com/drive/u/0/folders/1LSNkQ6iqKfVdjirjcCW-0sRj83qCY6Xw)
 
 ## Requirements Gathering
 
