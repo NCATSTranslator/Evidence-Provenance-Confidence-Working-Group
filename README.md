@@ -13,7 +13,8 @@ This is the project coordination repository of the Translator *Evidence Provenan
 
 ## Requirements Gathering
 
-- [EPC Modeling Requirements Collection](https://docs.google.com/spreadsheets/d/1WDkqNMhy7aer_3-JB4SCVhp1MZeFYZjCnYuRCnoZguo)
+- [EPC Modelling Requirements Collection](https://docs.google.com/spreadsheets/d/1WDkqNMhy7aer_3-JB4SCVhp1MZeFYZjCnYuRCnoZguo)
+- [EPC Modelling Notes](https://docs.google.com/document/d/13ItZjnM7A97z0EABrp9S3hNb48DlTP2QgMOJAeEabsw/edit#heading=h.bhjl4onb1tvj)
 
 ## Third Party Models
 
