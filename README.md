@@ -28,11 +28,13 @@ For convenience of access, this project has a dedicated EPPC fork of the Biolink
 
 A similar controlled EPC integration process as with the Biolink Model will likely be initiated for TRAPI as well (TBA).
 
-## Use Cases
+## General Operational Use Cases
 
 1. A user conducts an initial Translator ARS query which returns a non-empty knowledge graph result. They wish to view all of the available EPC information associated with a specific edge assertion in the graph, so triggers a second the ARS to retrieve all said EPC information in a second query to the graph, using some suitable edge identifier.
 
     a) Variant of 1: user provides specific EPCC information filters to constrain the information returned to specific types.
     b) Variant of 1 and 1a): the EPCC information returned default to 'shallow', 'breadth first', scope, so the user may ask for additional details about one or more specific components of the information returned (e.g. access details about underlying "evidence information objects" cited within the EPC).
 
+## Specific Use Case Development
 
+Using [Translator Competency Questions: Fanconi CQs](https://docs.google.com/spreadsheets/d/1wbP1Ykryibcan2ZgZTOmnGp9WjcRE7nNig3akiq0PuY/edit#gid=1337100562), and the [EPC Modelling Requirements Collection](https://docs.google.com/spreadsheets/d/1WDkqNMhy7aer_3-JB4SCVhp1MZeFYZjCnYuRCnoZguo) as inputs, an effort is underway to [specific EPC Use Cases](https://docs.google.com/spreadsheets/d/1iqbv-IdJE1P-__LTAmwbpp69IPJHCNj4N7J8W1hlkWI/edit#gid=0) from scientific question through to original Knowledge Sources via the ARS->ARA->KP architectural stack. 
