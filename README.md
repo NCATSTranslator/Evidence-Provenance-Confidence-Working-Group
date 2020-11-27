@@ -24,6 +24,8 @@ This is the project coordination repository of the Translator *Evidence Provenan
 
 For convenience of access, this project has a dedicated EPPC fork of the Biolink Model injected into this project as a Git `submodule`  in the *biolink* folder of the project.  The basic idea here is that we will make judicious EPCC revisions to this forked copy of the Biolink model,f or pull request merging into the main Biolink Model, once those changes are ready to be used by the Translator community.
 
+- Initial [Pull Request for OBAN/SEPIO-inspired Biolink Model revisions](https://github.com/NCATSTranslator/epcc-biolink-model-additions/pull/2)
+
 ## TRAPI Integration
 
 A similar controlled EPC integration process as with the Biolink Model will likely be initiated for TRAPI as well (TBA).
