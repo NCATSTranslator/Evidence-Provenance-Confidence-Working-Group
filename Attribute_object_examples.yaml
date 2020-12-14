@@ -1,0 +1,455 @@
+# Biolink/TRAPI 'Attribute' Object Modeling and Data Examples
+
+
+TRAPI 'ATTRIBUTE' MODELING PROPOSAL:
+## Attribute Schema Proposal (defined below using BiolinkML yaml syntax)
+## Corresponds roughly to what Richard B. proposed in the PR here (https://github.com/NCATSTranslator/ReasonerAPI/pull/186/files), 
+## and discussed in the ticket here (https://github.com/NCATSTranslator/ReasonerAPI/issues/185). 
+## It extends the current 0.9 TRAPI Attribute model with additional slots to represent the nature of the relationship between the 
+## Attribute's value and the Edge/Node from which it hangs.
+
+  attribute:
+    description: >-
+      An object that holds any type of attribute of an Edge or Node in a KG, as defined in the Attribute object itself. 
+      In a sense an Attribute object represents a reified slot. It allows data creators to define new 'slots' as objects 
+      in the data, and specify in definition of the Attribute the type of  value it holds, and the relationship of this 
+      value to the Edge or Node form which it hangs. In this way, the core schema can be extended conceputally 'in the data' 
+      to hold additional types of information about an Edge or Node without having to add new slots/features to the schema itself.      
+    slots:
+      - relationship_id        # a new proposed field. name t.b.d. other proposals include 'attribute_id', 'attribute_type', 'relation_id', 'slot_it'
+      - source_relationship    # a new proposed field. name t.b.d. other proposals include 'attribute name',  'relation_name', 'slot_name'
+      - value
+      - value_type_id          # previously called 'type', 'value_type' 
+      - source_value_type      # previously called 'name' , and 'value_type_name'
+      - url                    
+      - source                 
+    slot_usage:                # definitions of each slot in the Attribute class
+
+      relationship_id:
+        description: >-
+         A curie/iri of a ontology property that describes the type of relationship asserted to hold between the Attribute's value and 
+         the Edge from which the Attribute hangs. e.g. that a p-value represents SEPIO:0000440 ('supporting evidence for') the Edge.
+        required: false     
+        multivalued: false
+        range: curie        
+
+      source_relationship:
+        description: >-
+          The original name or identifier expressing relationship between the Attribute's value and the Association/Edge from which it hanges, 
+          as provided by the source of the Association. If no name or identifier for this relationship is provided by the source, leave this slot blank.  
+        # Previous definition: "The preferred label for the ontology property captured in the attribute type slot, as given by the data creator 
+        # (may be the same or different from the primary label of the ontology property)"
+        required: false
+        multivalued: false
+        range: string 
+
+      value:
+        description: >-
+         The value of the property in the attribute_type slot. Could be a numerical value (e.g. the value of a supporting experimental measurement 
+         or calculation), a string (e.g. a free-text name for an entity or concept), or a curie representing some entity or concepts 
+         in the domain (e.g. a PMID representing a publiation, or an ECO code representing a type of evidence, or a blob of structured json). 
+        required: true
+        multivalued: true
+        range: string 
+
+      value_type_id:
+        description: >-
+         A class iri/curie for the 'semantic type' of the data captured in the value slot. Can be specified as a term from an external ontology 
+         (e.g. EDAM, SIO, OBI, STATO), or a Biolink class. May be broader than the specific data type defined by the soruce, in cases where 
+         there is no ontology term precise enough to represent the more specific concept (e.g. source term "magama p-value" --> EDAM:data_1169 'p-value')
+        required: false
+        multivalued: true
+        range: curie        
+
+      source_value_type:
+        description: >-
+         The original name of the semantic type/data type of the info captured in the 'value' slot, as provided by the source of the Association. 
+         If no name/identifier is provided by the source, this slot should be blank.    
+       # Previous definition: Preferred name for the curie specified in the value_type slot, as given by the data creator 
+       # (may be the same or different from the primary label of the ontology class)   
+        required: false
+        multivalued: false
+        range: string 
+
+      source:
+        description: >-
+         The resource that asserted/defined the relationship defined in the Attribute between 
+         the value it holds and the entity/edge from which it hangs.  
+        required: false
+        multivalued: false
+        range: string 
+      
+      url:
+        description: >-
+          An address of a web page or document that represents or describes the entity represented in 
+          the 'value' field.  
+        required: false
+        multivalued: true
+        range: string 
+
+    close_mappings:
+      - FHIR:Extension     # MHB: at some point we should consider patterning our model after the 
+                           # FHIR extensibility mechanism, and using their names/conventions for things
+                           # https://www.hl7.org/fhir/extensibility.html
+
+
+#----------------------------------------------------------------------------------------------------#
+
+ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL: 
+## The Example below demonstrate three different categories of values:
+
+### 1. Attribute taking a quantitative value/data item (e.g. a p-value representing evidence supporting the edge)
+
+ attributes:        # a p-value representing evidence supporting the assertion expressed in the edge
+   - relationship_id: SEPIO:0000440    # has_supporting_evidence
+     source_relationship: 'evidence'      # indicates that the term 'evidence was used somewherein the sourceto describe the p-value
+     value: 0.0000316
+     value_type_id: EDAM:data_1169 # p-value
+     souce_value_type: p-value 
+     source: ChEMBL 
+
+
+### 2. Attribute taking a CURIE as a value, that represents an *instance* of some class of entity (e.g. a publication describing evidence for the edge)
+
+  attributes:        # a publication describing evidence used to support the edge
+    - relationship_id: SEPIO:0000438
+      source_relationship: has supporting evidence from source
+      value: PMID:2012345
+      value_type_id: EDAM:data_1187 # MHB: pmid, or use biolink:Publication?
+      source_value_type: PMID
+      source: ChEMBL
+      description: "Brush et al 2018"  # short descrition of what the value represents
+
+  attributes:        # the agent who authored the knowledge expressed in the edge
+    - relationship_id: SEPIO:0000130
+      source_relationship: authored by
+      value: ORCID:0000-0001-8732-0928
+      value_type_id: EDAM:data_XXXX  # ORCID identifier  
+      source_value_type: ORCID identifier
+      url: https://orcid.org/0000-0001-8732-0928
+      source: ChEMBL  
+      description: "Eric Deutsch"
+
+### 3. Attribute taking a value represented by an ontology term (e.g. an ECO code describing the type of evidence supporting the edge) 
+
+  attributes:        #  an ECO code describing the type of evidence supporting the edge
+    - relationship_id: SEPIO:0000398
+      source_relationship: has evidence of type
+      value: ECO:00000006
+      value_type_id: EDAM:data_0966  # ontology term
+      source_value_type: ontology term
+      source: ChEMBL
+      description: "experimental evidence"     
+      
+  
+
+#----------------------------------------------------------------------------------------------------#
+  
+FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED ATTRIBUTE MODEL, USING REAL KP DATA/USE CASES:
+  
+#### Example 1. Clinical Data Services association generated using an observed-expected ratio method applied to a specific COHD cohort/dataset
+ Source Data from COHD API (http://cohd.smart-api.info/#/reasoner/query):
+
+      "knowledge_graph": {
+        "edges": [
+          {
+            "id": "ke000000",
+            "source_id": "OMOP:192855",  # "Cancer in situ of urinary bladder"
+            "target_id": "OMOP:4021588", # "Instillation of therapeutic substance into bladder"
+            "type": "biolink:correlated_with"
+            "attributes": [
+              {
+                "name": "confidence_interval",
+                "source": "COHD",
+                "type": "EDAM:data_0951",
+                "value": [
+                  7.374817270079623,
+                  7.872219873513473
+                ]
+              },
+              {
+                "name": "dataset_id",
+                "source": "COHD",
+                "type": "EDAM:data_1048",
+                "value": 3
+              },
+              {
+                "name": "expected_count",
+                "source": "COHD",
+                "type": "EDAM:operation_3438",
+                "value": 0.0846235661353298
+              },
+              {
+                "name": "ln_ratio",
+                "source": "COHD",
+                "type": "EDAM:data_1772",
+                "value": 7.645692224215023
+              },
+              {
+                "name": "observed_count",
+                "source": "COHD",
+                "type": "EDAM:data_0006",
+                "value": 177
+              }
+            ],
+            }
+          ]
+        }
+
+
+ TRAPI-Compliant Representation of this Association:
+  edges: 
+  - id: cohd.Association001
+    category: biolink:Association
+    subject: OMOP:192855   # "Cancer in situ of urinary bladder"
+    predicate: biolink:correlated_with
+    object: OMOP:4021588   # "Instillation of therapeutic substance into bladder"
+    attributes:  
+    
+     - relationship_id: SEPIO:0000145
+       source_relationship: has_evidence_from_source  # alt, we might use SEPIO:0000440  has_supporting_evidence (if we consider the whole dataset to be evidence)
+       value: cohd:dataset3
+       value_type_id: EDAM:data_1048  # Database ID.  Might it be more appropritate to use IAO:0000100 'data set'?
+       source_value_type: Database ID  # This is the name of the EDAM class (no name provided in the souce cohd data)
+       source: COHD
+       
+     - relationship_id: SEPIO:0000440
+       source_relationship: has_supporting_evidence  
+       value: 177
+       value_type_id: EDAM:data_0006  # data
+       source_value_type: observed_count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)        
+       source: COHD 
+ 
+     - relationship_id: SEPIO:0000440
+       source_relationship: has_supporting_evidence  
+       value: 0.0846235661353298
+       value_type_id: EDAM:operation_3438  # calculation
+       source_value_type: expected_count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)      
+       source: COHD      
+     
+     - relationship_id: SEPIO:0000440
+       source_relationship: has_supporting_evidence  
+       value: 7.645692224215023
+       value_type_id: EDAM:data_1772  # score
+       source_value_type: ln_ratio  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)         
+       source: COHD
+
+     - relationship_id: SEPIO:0000440
+       source_relationship: has_supporting_evidence  
+       value: 
+         - 7.374817270079623
+         - 7.872219873513473
+       value_type_id: EDAM:data_0951  # statistical estimate score
+       source_value_type: confidence_interval  # this is cohd's name for the type of data, not the name of the EDAM class        
+       source: COHD
+ 
+ 
+ 
+# Since the confidence intervals are related to the ln_ratio, we could capture these inside the ln_ratio object in a nested Attribute
+#    - relationship_id: SEPIO:0000440
+#      source_relationship: has_supporting_evidence  
+#      value: 7.645692224215023
+#      value_type_id: EDAM:data_1772  
+#      source_value_type: ln_ratio           
+#      source: COHD
+#      attributes:
+#        - relationship_id: SEPIO:XXXXXXX
+#          source_relationship: has_confidence_interval  
+#          value: 
+#            - 7.374817270079623
+#            - 7.872219873513473
+#          value_type_id: EDAM:data_0951  
+#          source_value_type: confidence_interval          
+#          source: COHD
+
+# Proposing an Attribute to capture the statistical/computational method used to generate the Association
+#    - relationship_id: SEPIO:0000141
+#      source_relationship: was_specified_by
+#      value: cohd.association/obsExpRatio
+#      value_type_id: EDAM:operation_3658 # statistical inference
+#      source_value_type: statistical inference
+
+# Proposing an Attribute to capture the study group population that defines the context in which the association is held to be true
+#    - relationship_id: biolink:populationContextQualifier
+#      source_relationship: population context qualifier
+#      value: cohd:cohort3-100
+#      value_type_id: STATO:0000193 # study group population
+#      source_value_type: study group population 
+  
+
+
+#### Example 2. Text mining KP association generated from NLP-based text mining of publication text
+ Source Data from Text Mining KP API (http://35.232.64.189/docs):  (soon to be TRAPI compliant)
+
+     # Edge:     
+         graph": {
+          "nodes": [
+            {
+              "id": "n0",
+              "type": "chemical_substance",
+              "curie": "CHEBI:3215"      # bupivacaine
+            },
+            {
+              "id": "n1",
+              "type": "gene_product",
+              "curie": "PR:000031567"    # LRRC3B 
+            }
+          ],
+          "edges": [
+            {
+              "id": "e0",
+              "source_id": "n0",
+              "target_id": "n1",
+              "type": "negatively_regulates_entity_to_entity"
+            }
+          ]
+     
+     # Edge Properties:
+      {
+        'publication': 'PMID:29085514', 
+        'score': '0.99956816', 
+        'sentence': 'The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells.', 
+        'subject_spans': 'start: 31, end: 42', 
+        'object_spans': 'start: 104, end: 110', 
+        'provided_by': 'TMProvider'
+      }
+   
+
+ TRAPI-Compliant Representation of this Association:
+  edges: 
+  - id: tmkp.Association001
+    category: biolink:ChemicalToGeneAssociation
+    subject: CHEBI:3215          # bupivacaine
+    predicate: biolink:negatively_regulates_entity_to_entity
+    object: NCBIGene:51176       # LRRC3B 
+    attributes:
+    
+    - relationship_id: SEPIO:0000438
+      source_relationship: has_supporting_evidence_from_source
+      value: PMID:29085514
+      value_type_id: biolink:Publication 
+      source_value_type: Publication
+      source: TMProvider
+      
+    - relationship_id: SEPIO:0000440
+      source_relationship: has_supporting_evidence  
+      value: "The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+      value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'       source_value_type:  sentence text   
+      source: TMProvider
+      attributes:            #  exploring option of capturing this metadata in a nested Attribute, since it naturally represents a part of the sentence
+        - relationship_id: SIO:000028
+          source_relationship: has part 
+          value: 'start: 31, end: 42'
+          source_value_type:  subject span   
+        - relationship_id: SIO:000028
+          source_relationship: has part 
+          value: 'start: 104, end: 110'
+          source_value_type:  object span              
+       
+    - relationship_id: SEPIO:0000440
+      source_relationship: has_supporting_evidence  
+      value: 0.99956816
+      value_type_id: EDAM:data_1772     # score 
+      source_value_type:  sentence confidence score          
+      source: TMProvider
+
+
+
+#### Example 3. Molecular Interaction association from Molepro KP, derived from CHEMBL
+ Source Data from MolePro chembl targets serice/API (https://translator.broadinstitute.org/chembl/targets/transform):
+
+       {  # the Association asserts that CID:2244 (Aspirin) - is correlated with - NCBIGene:51176 (LEF1)
+        "id": "NCBIGene:51176",  # the object/target of the Association
+        "identifiers": {
+            "entrez": "NCBIGene:51176"
+            },
+        "source": "CMAP compound-to-gene transformer"  # the Agent that authored the Association
+        "attributes": [],  # attributes of the object/target node (none)
+        "biolink_class": "Gene",  # the biolink category of the object of the Association
+        "connections": [  # connections = edges/associations, between the subject captured in the 'source_element_id' slot of the connection object below, and the object captured in the id slot above 
+            {   "source_element_id": "CID:2244",  # the subject/source of the Association
+                "type": "correlated_with"   # the predicate of the Association
+                "attributes": [   # attributes of the Edge/Association
+                    {  
+                        "name": "CMAP similarity score",
+                        "provided_by": "CMAP compound-to-gene transformer",
+                        "source": "CMAP",
+                        "type": "CMAP similarity score",
+                        "value": "99.68"
+                    },
+                    { 
+                        "name": "reference",
+                        "provided_by": "CMAP compound-to-gene transformer",
+                        "source": "CMAP",
+                        "type": "reference",
+                        "value": "PMID:29195078"
+                    },
+                    { 
+                        "name": "about CMAP",
+                        "provided_by": "CMAP compound-to-gene transformer",
+                        "source": "CMAP",
+                        "type": "about CMAP",
+                        "url": "https://clue.io/cmap",
+                        "value": "https://clue.io/cmap"
+                    },
+                    {  
+                        "name": "CMAP touchstone data version",
+                        "provided_by": "CMAP compound-to-gene transformer",
+                        "source": "CMAP",
+                        "type": "CMAP touchstone data version",
+                        "url": "https://api.clue.io/api/touchstone-version",
+                        "value": "1.1.1.2"
+                    }
+                ],
+            }
+        ]
+    } 
+
+
+ TRAPI-Compliant Representation of this Association:
+  edges: 
+  - id: molepro.Association001
+    category: biolink:ChemicalToGeneAssociation
+    subject: CID:2244         # Aspirin
+    predicate: biolink:correlated_with
+    object: NCBIGene:51176    # LEF1
+    attributes:
+    
+     - relationship_id: SEPIO:0000440
+       source_relationship: has_supporting_evidence  
+       value: 99.68
+       value_type_id: CMAP similarity score     # MolePro does not provide a coded type from EDAM - assuming tis name is a placeholder?
+       source_value_type: CMAP similarity score          
+       source: CMAP 
+
+    - relationship_id: SEPIO:0000438
+      source_relationship: has_supporting_evidence_from_source
+      value: PMID:29195078
+      value_type_id: reference # MolePro uses free text here at present
+      source_value_type: reference
+      source: CMAP
+
+    - relationship_id: SEPIO:0000442
+      source_relationship: has_reference
+      value: https://clue.io/cmap
+      value_type_id: SIO:000302 # MHB: MolePro says the value type is "about CMAP" . . . I found this term for web page to use instead
+      source_value_type: web page
+      source: CMAP
+      url: https://clue.io/cmap
+
+    - relationship_id: SEPIO:0000438
+      source_relationship: has_supporting_evidence_from_source
+      value: CMAP touchstone v1.1.1.2     # MHB: I framed the version as the dataset itself, named with its version
+      value_type_id: IAO:0000100  # MolePro uses free text here, "CMAP touchstone data version" - propose a description slot to capture things like this
+      source_value_type: data set
+      source: CMAP
+      url: https://api.clue.io/api/touchstone-version    
+      description: "CMAP touchstone data version"
+
+#   Proposing that the CMAP compound-to-gene transformer tool mentioned in each Attrbute be pulled out and represtned as the authro / creator of the Association record 
+#   - relationship_id: SEPIO:0000130
+#     source_relationship: authored by   # MHB: or if this is the agent that created the record here, not who authored the knowledge, then use SEPIO:record_created_by
+#     value: CMAP compound-to-gene transformer
+#     value_type_id: SWO:0000001  # software  
+#     source_value_type: software
+
