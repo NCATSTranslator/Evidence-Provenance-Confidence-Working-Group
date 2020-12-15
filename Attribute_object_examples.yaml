@@ -1,4 +1,3 @@
-####Active Version uploaded to EPC Github Repo here: https://github.com/NCATSTranslator/Evidence-Provenance-Confidence-Working-Group/blob/master/Attribute_object_examples.yaml
 # Biolink/TRAPI 'Attribute' Object Modeling and Data Examples
 
 
@@ -106,7 +105,7 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
      source_relationship: "evidence"   # term the source may have used to describe the relationship of the p-value to the edge 
      value: 0.0000316
      value_type_id: EDAM:data_1169 # p-value
-     souce_value_type: p-value 
+     souce_value_type: "p-value" 
      source: ChEMBL 
 
 
@@ -117,7 +116,7 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
       source_relationship: "evidence from"   # term the source may have used to describe the relationship of the publication to the edge 
       value: PMID:2012345
       value_type_id: EDAM:data_1187  # PMID
-      source_value_type: publication
+      source_value_type: "publication"
       source: ChEMBL
       description: "Smith et al 2018"  # short descrition of what the value represents
 
@@ -125,8 +124,8 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
     - relationship_id: SEPIO:0000130  # authored by
       source_relationship: "creator"    # term the source may have used to describe the relationship of the ORCID to the edge 
       value: ORCID:0000-0001-8732-0928
-      value_type_id: EDAM:data_XXXX  # ORCID identifier  
-      source_value_type: ORCID 
+      value_type_id: EDAM:data_XXXX  # ORCID  
+      source_value_type: "identifier" 
       url: https://orcid.org/0000-0001-8732-0928
       source: ChEMBL  
       description: "Eric Deutsch"
@@ -138,7 +137,7 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
       source_relationship:  "evidence code"   # term the source may have used to describe the relationship of the ECO code to the edge 
       value: ECO:00000006
       value_type_id: EDAM:data_0966           # ontology term
-      source_value_type: code
+      source_value_type: "code"
       source: ChEMBL
       description: "experimental evidence"     
       
@@ -148,7 +147,7 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
   
 FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/USE CASES:
   
-#### Example 1. Clinical Data Services association generated using an observed-expected ratio method applied to a specific COHD cohort/dataset
+#### Example 1. Clinical Data Services association generated using a statistical methods based on observed-expected ratios, applied to a specific COHD cohort/dataset
  Source Data from COHD API (http://cohd.smart-api.info/#/reasoner/query):
 
       "knowledge_graph": {
@@ -207,8 +206,8 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
     object: OMOP:4021588   # "Instillation of therapeutic substance into bladder"
     attributes:  
     
-     - relationship_id: SEPIO:0000145   # has_evidence_from_source  (alt, we might use SEPIO:0000440 has_supporting_evidence)
-       source_relationship:  null       # example of null value, when source does not describe the EPC relationship
+     - relationship_id: SEPIO:0000145   # has_evidence_from_source  
+       source_relationship:  null       # null b/c the source does not explicitly describe the EPC relationship
        value: cohd:dataset3
        value_type_id: EDAM:data_1048  # Database ID.  Might it be more appropritate to use IAO:0000100 'data set'?
        source_value_type: dataset  # This is the name of the EDAM class (no name provided in the souce cohd data)
@@ -326,29 +325,26 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
     attributes:
     
     - relationship_id: SEPIO:0000438  # has_supporting_evidence_from_source
-      source_relationship:  "sources"  
+      source_relationship:  "source publication"    # what the source might have called the relationship
       value: PMID:29085514
-      value_type_id: biolink:Publication 
-      source_value_type: Publication
+      value_type_id: biolink:Publication          # here a biolink term is used to type the value.
+      source_value_type: "PMID"
       source: TMProvider
       
-    - relationship_id: SEPIO:0000440
-      source_relationship: has_supporting_evidence  
+    - relationship_id: SEPIO:0000440   # has_supporting_evidence 
       value: "The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
-      value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'       source_value_type:  sentence text   
+      value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'       
+      source_value_type:  sentence text   
       source: TMProvider
       attributes:            #  exploring option of capturing this metadata in a nested Attribute, since it naturally represents a part of the sentence
-        - relationship_id: SIO:000028
-          source_relationship: has part 
+        - relationship_id: SIO:000028  # has part
           value: 'start: 31, end: 42'
           source_value_type:  subject span   
-        - relationship_id: SIO:000028
-          source_relationship: has part 
+        - relationship_id: SIO:000028  # has part
           value: 'start: 104, end: 110'
           source_value_type:  object span              
        
-    - relationship_id: SEPIO:0000440
-      source_relationship: has_supporting_evidence  
+    - relationship_id: SEPIO:0000440  # has_supporting_evidence  
       value: 0.99956816
       value_type_id: EDAM:data_1772     # score 
       source_value_type:  sentence confidence score          
@@ -417,29 +413,25 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
     attributes:
     
      - relationship_id: SEPIO:0000440  # has_supporting_evidence
-       source_relationship: null  
        value: 99.68
        value_type_id: CMAP similarity score     # MolePro does not provide a coded type from EDAM - assuming tis name is a placeholder?
        source_value_type: CMAP similarity score          
        source: CMAP 
 
     - relationship_id: SEPIO:0000438  # has_supporting_evidence_from_source
-      source_relationship: null
       value: PMID:29195078
       value_type_id: reference # MolePro uses free text here at present
       source_value_type: reference
       source: CMAP
 
     - relationship_id: SEPIO:0000442  # has_reference
-      source_relationship:  null
       value: https://clue.io/cmap
-      value_type_id: SIO:000302 # MHB: MolePro says the value type is "about CMAP" . . . I found this term for web page to use instead
-      source_value_type: web page
+      value_type_id: SIO:000302    #  web page 
+      source_value_type: about CMAP
       source: CMAP
       url: https://clue.io/cmap
 
     - relationship_id: SEPIO:0000438  # has_supporting_evidence_from_source
-      source_relationship:   null
       value: CMAP touchstone v1.1.1.2     # MHB: I framed the version as the dataset itself, named with its version
       value_type_id: IAO:0000100  # MolePro uses free text here, "CMAP touchstone data version" - propose a description slot to capture things like this
       source_value_type: data set
@@ -447,9 +439,10 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
       url: https://api.clue.io/api/touchstone-version    
       description: "CMAP touchstone data version"
 
-#   Proposing that the CMAP compound-to-gene transformer tool mentioned in each Attrbute be pulled out and represtned as the authro / creator of the Association record 
+#   Proposing that the CMAP compound-to-gene transformer tool mentioned in each Attrbute be pulled out and represtned as the author / creator of the Association record 
 #   - relationship_id: SEPIO:0000130  # authored by  (MHB: or if this is the agent that created the record, not the knowledge,  use SEPIO:record_created_by)
 #     source_relationship:  null   
 #     value: CMAP compound-to-gene transformer
 #     value_type_id: SWO:0000001  # software  
 #     source_value_type: software
+
