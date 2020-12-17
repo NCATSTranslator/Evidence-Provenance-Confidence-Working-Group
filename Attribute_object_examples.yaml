@@ -1,3 +1,4 @@
+####Active Version uploaded to EPC Github Repo here: https://github.com/NCATSTranslator/Evidence-Provenance-Confidence-Working-Group/blob/master/Attribute_object_examples.yaml
 # Biolink/TRAPI 'Attribute' Object Modeling and Data Examples
 
 
@@ -16,16 +17,18 @@ TRAPI 'ATTRIBUTE' MODELING PROPOSAL:
       value to the Edge or Node form which it hangs. In this way, the core schema can be extended conceputally 'in the data' 
       to hold additional types of information about an Edge or Node without having to add new slots/features to the schema itself.      
     slots:
-      - relationship_id        # a new proposed field. name t.b.d. other proposals include 'attribute_id', 'attribute_type', 'relation_id', 'slot_it'
-      - source_relationship    # a new proposed field. name t.b.d. other proposals include 'attribute name',  'relation_name', 'slot_name'
+      - attribute_type_id        # a new proposed field. name t.b.d. other proposals include 'relationship_id', 'attribute_id', 'attribute_type', 'relation_id', 'slot_it'
+      - attribute_from_source    # a new proposed field. name t.b.d. other proposals include 'source_relationship', 'attribute name',  'relation_name', 'slot_name'
       - value
-      - value_type_id          # previously called 'type', 'value_type' 
-      - source_value_type      # previously called 'name' , and 'value_type_name'
+      - value_type_id            # previously called 'type', 'value_type'
+      - value_type_from_source   # previously called 'name' , and 'value_type_name', 'value_type_from_source'
       - url                    
-      - source                 
-    slot_usage:                # definitions of each slot in the Attribute class
+      - source
+      - description
 
-      relationship_id:
+    slot_usage:                  # definitions of each slot in the Attribute class
+
+      attribute_type_id:
         description: >-
          A curie/iri of a ontology property that describes the type of relationship asserted to hold between the Attribute's value and 
          the Edge from which the Attribute hangs. e.g. that a p-value represents SEPIO:0000440 ('supporting evidence for') the Edge.
@@ -33,7 +36,7 @@ TRAPI 'ATTRIBUTE' MODELING PROPOSAL:
         multivalued: false
         range: curie        
 
-      source_relationship:
+      attribute_from_source:
         description: >-
           The original name or identifier expressing relationship between the Attribute's value and the Association/Edge from which it hanges, 
           as provided by the source of the Association. If no name or identifier for this relationship is provided by the source, leave this slot blank.  
@@ -61,7 +64,7 @@ TRAPI 'ATTRIBUTE' MODELING PROPOSAL:
         multivalued: true
         range: curie        
 
-      source_value_type:
+      value_type_from_source:
         description: >-
          The original name of the semantic type/data type of the info captured in the 'value' slot, as provided by the source of the Association. 
          If no name/identifier is provided by the source, this slot should be blank.    
@@ -87,6 +90,13 @@ TRAPI 'ATTRIBUTE' MODELING PROPOSAL:
         multivalued: true
         range: string 
 
+      description:
+        description: >-
+          A free text description of the value, and/or the intended meaning/use of the attribute-value pair  
+        required: false
+        multivalued: false
+        range: string 
+
     close_mappings:
       - FHIR:Extension     # MHB: at some point we should consider patterning our model after the 
                            # FHIR extensibility mechanism, and using their names/conventions for things
@@ -101,8 +111,8 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
 ### 1. Attribute taking a quantitative value/data item (e.g. a p-value representing evidence supporting the edge)
 
  attributes:        # a p-value representing evidence supporting the assertion expressed in the edge
-   - relationship_id: SEPIO:0000440    # has_supporting_evidence
-     source_relationship: "evidence"   # term the source may have used to describe the relationship of the p-value to the edge 
+   - attribute_type_id: SEPIO:0000440    # has_supporting_evidence
+     attribute_from_source: "evidence"   # term the source may have used to describe the relationship of the p-value to the edge 
      value: 0.0000316
      value_type_id: EDAM:data_1169 # p-value
      souce_value_type: "p-value" 
@@ -112,20 +122,20 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
 ### 2. Attribute taking a CURIE as a value, that represents an *instance* of some class of entity (e.g. a publication describing evidence for the edge)
 
   attributes:        # a publication describing evidence used to support the edge
-    - relationship_id: SEPIO:0000438       # has supporting evidence from source
-      source_relationship: "evidence from"   # term the source may have used to describe the relationship of the publication to the edge 
+    - attribute_type_id: SEPIO:0000438       # has supporting evidence from source
+      attribute_from_source: "evidence from"   # term the source may have used to describe the relationship of the publication to the edge 
       value: PMID:2012345
       value_type_id: EDAM:data_1187  # PMID
-      source_value_type: "publication"
+      value_type_from_source: "publication"
       source: ChEMBL
       description: "Smith et al 2018"  # short descrition of what the value represents
 
   attributes:        # the agent who authored the knowledge expressed in the edge
-    - relationship_id: SEPIO:0000130  # authored by
-      source_relationship: "creator"    # term the source may have used to describe the relationship of the ORCID to the edge 
+    - attribute_type_id: SEPIO:0000130  # authored by
+      attribute_from_source: "creator"    # term the source may have used to describe the relationship of the ORCID to the edge 
       value: ORCID:0000-0001-8732-0928
       value_type_id: EDAM:data_XXXX  # ORCID  
-      source_value_type: "identifier" 
+      value_type_from_source: "identifier" 
       url: https://orcid.org/0000-0001-8732-0928
       source: ChEMBL  
       description: "Eric Deutsch"
@@ -133,11 +143,11 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
 ### 3. Attribute taking a value represented by an ontology term (e.g. an ECO code describing the type of evidence supporting the edge) 
 
   attributes:        #  an ECO code describing the type of evidence supporting the edge
-    - relationship_id: SEPIO:0000398          # has evidence of type
-      source_relationship:  "evidence code"   # term the source may have used to describe the relationship of the ECO code to the edge 
+    - attribute_type_id: SEPIO:0000398          # has evidence of type
+      attribute_from_source:  "evidence"        # term the source may have used to describe the relationship of the ECO code to the edge 
       value: ECO:00000006
-      value_type_id: EDAM:data_0966           # ontology term
-      source_value_type: "code"
+      value_type_id: EDAM:data_0966             # ontology term
+      value_type_from_source: "code"
       source: ChEMBL
       description: "experimental evidence"     
       
@@ -206,75 +216,75 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
     object: OMOP:4021588   # "Instillation of therapeutic substance into bladder"
     attributes:  
     
-     - relationship_id: SEPIO:0000145   # has_evidence_from_source  
-       source_relationship:  null       # null b/c the source does not explicitly describe the EPC relationship
+     - attribute_type_id: SEPIO:0000145   # has_evidence_from_source  
+       attribute_from_source:  null       # null b/c the source does not explicitly describe the EPC relationship
        value: cohd:dataset3
        value_type_id: EDAM:data_1048  # Database ID.  Might it be more appropritate to use IAO:0000100 'data set'?
-       source_value_type: dataset  # This is the name of the EDAM class (no name provided in the souce cohd data)
+       value_type_from_source: dataset  # This is the name of the EDAM class (no name provided in the souce cohd data)
        source: COHD
        
-     - relationship_id: SEPIO:0000440  # has_supporting_evidence 
-       source_relationship:  null
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
+       attribute_from_source:  null
        value: 177
        value_type_id: EDAM:data_0006  # data
-       source_value_type: observed count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)        
+       value_type_from_source: observed count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)        
        source: COHD 
  
-     - relationship_id: SEPIO:0000440  # has_supporting_evidence 
-       source_relationship: null  
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
+       attribute_from_source: null  
        value: 0.0846235661353298
        value_type_id: EDAM:operation_3438  # calculation
-       source_value_type: expected count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)      
+       value_type_from_source: expected count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)      
        source: COHD      
      
-     - relationship_id: SEPIO:0000440  # has_supporting_evidence 
-       source_relationship: null  
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
+       attribute_from_source: null  
        value: 7.645692224215023
        value_type_id: EDAM:data_1772  # score
-       source_value_type: ln ratio  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)         
+       value_type_from_source: ln ratio  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)         
        source: COHD
 
-     - relationship_id: SEPIO:0000440  # has_supporting_evidence 
-       source_relationship: null  
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
+       attribute_from_source: null  
        value: 
          - 7.374817270079623
          - 7.872219873513473
        value_type_id: EDAM:data_0951  # statistical estimate score
-       source_value_type: confidence interval  # this is cohd's name for the type of data, not the name of the EDAM class        
+       value_type_from_source: confidence interval  # this is cohd's name for the type of data, not the name of the EDAM class        
        source: COHD
  
  
  
 # Since the confidence intervals are related to the ln_ratio, we could capture these inside the ln_ratio object in a nested Attribute
-#    - relationship_id: SEPIO:0000440   # has_supporting_evidence 
-#      source_relationship:  null
+#    - attribute_type_id: SEPIO:0000440   # has_supporting_evidence 
+#      attribute_from_source:  null
 #      value: 7.645692224215023
 #      value_type_id: EDAM:data_1772  
-#      source_value_type: ln ratio           
+#      value_type_from_source: ln ratio           
 #      source: COHD
 #      attributes:
-#        - relationship_id: SEPIO:XXXXXXX
-#          source_relationship: has_confidence_interval  
+#        - attribute_type_id: SEPIO:XXXXXXX
+#          attribute_from_source: has_confidence_interval  
 #          value: 
 #            - 7.374817270079623
 #            - 7.872219873513473
 #          value_type_id: EDAM:data_0951  
-#          source_value_type: confidence_interval          
+#          value_type_from_source: confidence_interval          
 #          source: COHD
 
 # Proposing an Attribute to capture the statistical/computational method used to generate the Association
-#    - relationship_id: SEPIO:0000141  # was_specified_by
-#      source_relationship:  "method"
+#    - attribute_type_id: SEPIO:0000141  # was_specified_by
+#      attribute_from_source:  "method"
 #      value: cohd.association/obsExpRatio
 #      value_type_id: EDAM:operation_3658 # statistical inference
-#      source_value_type: statistical inference
+#      value_type_from_source: statistical inference
 
 # Proposing an Attribute to capture the study group population that defines the context in which the association is held to be true
-#    - relationship_id: biolink:populationContextQualifier
-#      source_relationship:  null
+#    - attribute_type_id: biolink:populationContextQualifier
+#      attribute_from_source:  null
 #      value: cohd:cohort3-100
 #      value_type_id: STATO:0000193 # study group population
-#      source_value_type: study group population 
+#      value_type_from_source: study group population 
   
 
 
@@ -324,30 +334,30 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
     object: NCBIGene:51176       # LRRC3B 
     attributes:
     
-    - relationship_id: SEPIO:0000438  # has_supporting_evidence_from_source
-      source_relationship:  "source publication"    # what the source might have called the relationship
+    - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source
+      attribute_from_source:  "source publication"    # what the source might have called the relationship
       value: PMID:29085514
       value_type_id: biolink:Publication          # here a biolink term is used to type the value.
-      source_value_type: "PMID"
+      value_type_from_source: "PMID"
       source: TMProvider
       
-    - relationship_id: SEPIO:0000440   # has_supporting_evidence 
+    - attribute_type_id: SEPIO:0000440   # has_supporting_evidence 
       value: "The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
       value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'       
-      source_value_type:  sentence text   
+      value_type_from_source:  sentence text   
       source: TMProvider
       attributes:            #  exploring option of capturing this metadata in a nested Attribute, since it naturally represents a part of the sentence
-        - relationship_id: SIO:000028  # has part
+        - attribute_type_id: SIO:000028  # has part
           value: 'start: 31, end: 42'
-          source_value_type:  subject span   
-        - relationship_id: SIO:000028  # has part
+          value_type_from_source:  subject span   
+        - attribute_type_id: SIO:000028  # has part
           value: 'start: 104, end: 110'
-          source_value_type:  object span              
+          value_type_from_source:  object span              
        
-    - relationship_id: SEPIO:0000440  # has_supporting_evidence  
+    - attribute_type_id: SEPIO:0000440  # has_supporting_evidence  
       value: 0.99956816
       value_type_id: EDAM:data_1772     # score 
-      source_value_type:  sentence confidence score          
+      value_type_from_source:  sentence confidence score          
       source: TMProvider
 
 
@@ -412,37 +422,37 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
     object: NCBIGene:51176    # LEF1
     attributes:
     
-     - relationship_id: SEPIO:0000440  # has_supporting_evidence
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence
        value: 99.68
        value_type_id: CMAP similarity score     # MolePro does not provide a coded type from EDAM - assuming tis name is a placeholder?
-       source_value_type: CMAP similarity score          
+       value_type_from_source: CMAP similarity score          
        source: CMAP 
 
-    - relationship_id: SEPIO:0000438  # has_supporting_evidence_from_source
+    - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source
       value: PMID:29195078
       value_type_id: reference # MolePro uses free text here at present
-      source_value_type: reference
+      value_type_from_source: reference
       source: CMAP
 
-    - relationship_id: SEPIO:0000442  # has_reference
+    - attribute_type_id: SEPIO:0000442  # has_reference
       value: https://clue.io/cmap
       value_type_id: SIO:000302    #  web page 
-      source_value_type: about CMAP
+      value_type_from_source: about CMAP
       source: CMAP
       url: https://clue.io/cmap
 
-    - relationship_id: SEPIO:0000438  # has_supporting_evidence_from_source
+    - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source
       value: CMAP touchstone v1.1.1.2     # MHB: I framed the version as the dataset itself, named with its version
       value_type_id: IAO:0000100  # MolePro uses free text here, "CMAP touchstone data version" - propose a description slot to capture things like this
-      source_value_type: data set
+      value_type_from_source: data set
       source: CMAP
       url: https://api.clue.io/api/touchstone-version    
       description: "CMAP touchstone data version"
 
 #   Proposing that the CMAP compound-to-gene transformer tool mentioned in each Attrbute be pulled out and represtned as the author / creator of the Association record 
-#   - relationship_id: SEPIO:0000130  # authored by  (MHB: or if this is the agent that created the record, not the knowledge,  use SEPIO:record_created_by)
-#     source_relationship:  null   
+#   - attribute_type_id: SEPIO:0000130  # authored by  (MHB: or if this is the agent that created the record, not the knowledge,  use SEPIO:record_created_by)
+#     attribute_from_source:  null   
 #     value: CMAP compound-to-gene transformer
 #     value_type_id: SWO:0000001  # software  
-#     source_value_type: software
+#     value_type_from_source: software
 
