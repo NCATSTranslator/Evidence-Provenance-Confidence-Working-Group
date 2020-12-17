@@ -114,7 +114,7 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
      attribute_from_source: "evidence"   # term the source may have used to describe the relationship of the p-value to the edge 
      value: 0.0000316
      value_type_id: EDAM:data_1169 # p-value
-     souce_value_type: "p-value" 
+     value_type_from_source: "p-value" 
      value_source: ChEMBL 
 
 
