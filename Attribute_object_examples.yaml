@@ -1,3 +1,4 @@
+####Active Version uploaded to EPC Github Repo here: https://github.com/NCATSTranslator/Evidence-Provenance-Confidence-Working-Group/blob/master/Attribute_object_examples.yaml
 # Biolink/TRAPI 'Attribute' Object Modeling and Data Examples
 
 
@@ -121,13 +122,13 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
 ### 2. Attribute taking a CURIE as a value, that represents an *instance* of some class of entity (e.g. a publication describing evidence for the edge)
 
   attributes:        # a publication describing evidence used to support the edge
-    - attribute_type_id: SEPIO:0000438       # has supporting evidence from source
+    - attribute_type_id: SEPIO:0000438         # has evidence from source
       attribute_from_source: "evidence from"   # term the source may have used to describe the relationship of the publication to the edge 
       value: PMID:2012345
       value_type_id: EDAM:data_1187  # PMID
       value_type_from_source: "publication"
       value_source: ChEMBL
-      description: "Smith et al 2018"  # short descrition of what the value represents
+      description: "Smith et al 2018"  # short description of what the value represents
 
   attributes:        # the agent who authored the knowledge expressed in the edge
     - attribute_type_id: SEPIO:0000130  # authored by
@@ -143,7 +144,7 @@ ATTRIBUTE OBJECT EXAMPLES TO DEMONSTRATE THE MODEL:
 
   attributes:        #  an ECO code describing the type of evidence supporting the edge
     - attribute_type_id: SEPIO:0000398          # has evidence of type
-      attribute_from_source:  "evidence"        # term the source may have used to describe the relationship of the ECO code to the edge 
+      attribute_from_source:  "type of evidence"   # term the source may have used to describe the relationship of the ECO code to the edge 
       value: ECO:00000006
       value_type_id: EDAM:data_0966             # ontology term
       value_type_from_source: "code"
@@ -219,28 +220,28 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
        attribute_from_source:  null       # null b/c the source does not explicitly describe the EPC relationship
        value: cohd:dataset3
        value_type_id: EDAM:data_1048  # Database ID.  Might it be more appropritate to use IAO:0000100 'data set'?
-       value_type_from_source: dataset  # This is the name of the EDAM class (no name provided in the souce cohd data)
+       value_type_from_source: null  # no name provided in the source cohd data
        value_source: COHD
        
      - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
        attribute_from_source:  null
        value: 177
        value_type_id: EDAM:data_0006  # data
-       value_type_from_source: observed count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)        
+       value_type_from_source: observed count  # this is cohd's more specific name for the type of data        
        value_source: COHD 
  
      - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
        attribute_from_source: null  
        value: 0.0846235661353298
        value_type_id: EDAM:operation_3438  # calculation
-       value_type_from_source: expected count  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)      
+       value_type_from_source: expected count  # this is cohd's more specific name for the type of data      
        value_source: COHD      
      
      - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
        attribute_from_source: null  
        value: 7.645692224215023
        value_type_id: EDAM:data_1772  # score
-       value_type_from_source: ln ratio  # this is cohd's name for the type of data, not the name of the EDAM class (which is not specific enough)         
+       value_type_from_source: ln ratio  # this is cohd's more specific name for the type of data         
        value_source: COHD
 
      - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
@@ -249,7 +250,7 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
          - 7.374817270079623
          - 7.872219873513473
        value_type_id: EDAM:data_0951  # statistical estimate score
-       value_type_from_source: confidence interval  # this is cohd's name for the type of data, not the name of the EDAM class        
+       value_type_from_source: confidence interval  # this is cohd's more specific name for the type of data        
        value_source: COHD
  
  
@@ -423,7 +424,7 @@ FULL ASSOCIATION EXAMPLES DEMONSTRTING THE PROPOSED MODEL, USING REAL KP DATA/US
     
      - attribute_type_id: SEPIO:0000440  # has_supporting_evidence
        value: 99.68
-       value_type_id: CMAP similarity score     # MolePro does not provide a coded type from EDAM - assuming tis name is a placeholder?
+       value_type_id: CMAP similarity score     # MolePro does not provide a coded type from EDAM - assuming this name is a placeholder?
        value_type_from_source: CMAP similarity score          
        value_source: CMAP 
 
