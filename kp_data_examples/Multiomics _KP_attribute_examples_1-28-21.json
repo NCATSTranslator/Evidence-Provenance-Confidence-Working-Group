@@ -40,7 +40,7 @@
               "value": 0.3300248139,
               "type": "bts:frequency"
             }
-                                                 // MHB: Does the KP want to make the broad assertion that PTEN is mutated in 33% of glioblastomas? Or merely report that in this specific TCGA population, PTEN is mutatd in 33% of glioblastoma cases? If the latter, the association should be qualified by the study population context (as we are doing for clinical associations form ICEES that are similarly based on a single statistical analysis of pateint data)
+                                      // MHB: Does the KP want to make the broad assertion that PTEN is mutated in 33% of glioblastomas? Or merely report that in this specific TCGA population, PTEN is mutatd in 33% of glioblastoma cases? If the latter, the association should be qualified by the study population context (as we are doing for clinical associations form ICEES that are similarly based on a single statistical analysis of pateint data)
           ]
         },
 
