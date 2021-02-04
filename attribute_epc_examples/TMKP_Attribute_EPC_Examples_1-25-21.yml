@@ -1,0 +1,324 @@
+# TMKP's Proposed Attribute-based representation, TRAPI 1.0 compliant (from https://github.com/NCATSTranslator/Text-Mining-Provider-Roadmap/issues/78)
+
+nodes:
+  - id: CHEBI:3215
+     category: biolink:ChemicalSubstance
+     name: "bupivacaine"
+     attributes:  # MHB: I view the confidence score as a piece of evidnece supporting the association (how confident we are that the NLP tool correctly identified a concept in text). It is not really an attribute of the "bupivacaine" concept that should travel with the node. Also, in this example this concept was extracted from two sentences from two different pubs - each of which likely comes with its own confidence score, right? . . . so we cannot collapse to one score hanging from the subject node, right . . . unless this is a composite score derived from all sentence-specific scores? But I suspect we want to keep these subject/object confidence scores separate, and with the pubs they came from?
+       - attribute_type_id: SEPIO:0000168  # confidence_score
+         attribute_from_source: "has confidence score"
+         value: 0.7578
+         value_type_id: biolink:ConfidenceLevel
+         value_type_from_source: "confidence score"
+         value_source: TMProvider
+
+  - id: PR:000031567
+    category: biolink:GeneOrGeneProduct
+    name: "LRRC3B"
+    attributes:   # Same comment as for the node above
+      - attribute_type_id: SEPIO:0000168  # confidence_score
+        attribute_from_source: "has confidence score"
+        value: 0.5467
+        value_type_id: biolink:ConfidenceLevel
+        value_type_from_source: "confidence score"
+        value_source: TMProvider          
+
+edges: 
+  - id: tmkp.Association001
+    category: biolink:ChemicalToGeneAssociation
+    subject: CHEBI:3215          # bupivacaine
+    predicate: biolink:negatively_regulates_entity_to_entity
+    object: PR:000031567       # LRRC3B 
+    attributes:
+
+      - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source
+        attribute_from_source:  "source publication"    # MHB: TMKP is the source - what would you put here, if anything?
+        value: PMID:29085514
+        value_type_id: biolink:Publication   # Consider what level of typing to assign here (string? edam:data_3671? biolink:Publication) - what is use case?
+        value_type_from_source: "PMID"
+        value_source: TMProvider
+        attributes:
+           - attribute_type_id: SIO:000028  # has part
+             value: "The administration of 50 µg/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+             value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'       
+             value_type_from_source:  sentence text   
+             attributes:
+               - attribute_type_id: SIO:000028  # has part
+                 value: '31|42'
+                 value_type_id: SIO:001056 # character position
+                 value_type_from_source:  subject span   
+               - attribute_type_id: SIO:000028  # has part
+                 value: '104|110'
+                 value_type_id: SIO:001056 # character position
+                 value_type_from_source:  object span               
+
+            # MHB: SEPIO:has_supporting_evidence is used to link an assertion to info representing evidence supporting it - so this attribute object should hang from the edge/association directly (two levels up), not the sentence.
+               - attribute_type_id: SEPIO:0000440  # has_supporting_evidence   
+                 value: 0.99956816
+                 value_type_id: EDAM:data_1772     # score 
+                 value_type_from_source:  sentence confidence score          
+                 value_source: TMProvider BERT model v0.1
+
+      - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source
+        attribute_from_source:  "source publication"    # what the source might have called the relationship
+        value: PMID:12345678
+        value_type_id: biolink:Publication          # here a biolink term is used to type the value.
+        value_type_from_source: "PMID"
+        value_source: TMProvider
+        attributes:
+          - attribute_type_id: SIO:000028  # has part
+            value: "This is a second sentence indicating that bupivacaine negatively regulates LRRC3B.'"
+            value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'       
+            value_type_from_source:  sentence text   
+            attributes:
+              - attribute_type_id: SIO:000028  # has part
+                value: '42|53'
+                value_type_id: SIO:001056 # character position
+                value_type_from_source:  subject span   
+              - attribute_type_id: SIO:000028  # has part
+                value: '75|81'
+                value_type_id: SIO:001056 # character position
+                value_type_from_source:  object span               
+              - attribute_type_id: SEPIO:0000440  # has_supporting_evidence  
+                value: 0.876
+                value_type_id: EDAM:data_1772     # score 
+                value_type_from_source:  sentence confidence score          
+                value_source: TMProvider BERT model v0.1
+
+      - attribute_type_id: SEPIO:0000168  # confidence_score
+        attribute_from_source: "has aggregate confidence score"
+        value: 0.64711234
+        value_type_id: biolink:ConfidenceLevel
+        value_type_from_source: "aggregate confidence score"     # explain what this is . . . confidence in accurate sentence extraction, or in the validity of the assertion?
+        value_source: TMProvider
+
+
+# ---------------------------------------------------------------------------------------------------------
+
+
+## Native/Structured SEPIO Representation of Matt's Proposed Model (see Lucidchart diagram for high-level view)
+  - id: tmkp.Association001
+    category: biolink:ChemicalToGeneAssociation
+    subject: CHEBI:3215          # bupivacaine
+    predicate: biolink:negatively_regulates_entity_to_entity
+    object: NCBIGene:51176
+    has_evidence_from_source: 
+      - id: PMID:29085514
+        type: biolink:Publication
+      - id: PMID:12345678
+        type: biolink:Publication 
+    has_evidence_line:     
+    ## Evidence Line #1
+      - id: tmkp.EvidenceLine001
+        type: SEPIO:000002  # Evidence Line
+        has_support_from_source: PMID:29085514
+        has_evidence_item: 
+          - id: tmkp.Statement001
+            type: SEPIO:0000174  # Statement
+            text: "The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+            subject: 31|42   # character position of the text 'bupivacaine'
+            object: 104|110  # character position of the text 'LRRC3B'
+            is_reported_in: PMID:29085514
+         - id: tmkp.Score001
+           type: biolink:xxxx  # sentence confidence score (that sentence was extracted/translated accurately from the pub, not that it is true)
+           value:  0.99956816
+           authored_by: TMProvider BERT model v0.1  # is this a computational agent that generated the score, or method specifying how it was calculated? 
+         - id: tmkp.Score002
+           type: biolink:xxxx  # subject concept confidence score (confidence that concept was extracted/translated accurately from the pub)
+           value:  0.7578
+           authored_by: TMProvider        
+         - id: tmkp.Score003
+           type: biolink:xxxx  # object concept confidence score (confidence that concept was extracted/translated accurately from the pub)
+           value:  0.5467
+           authored_by: TMProvider  
+
+    ## Evidence Line #2
+      - id: tmkp.EvidenceLine002
+        type: SEPIO:0000002  # Evidence Line
+        has_support_from_source: PMID:12345678
+        has_evidence_item: 
+          - id: tmkp.Statement002
+            type: SEPIO:0000174  # Statement
+            text: "This is a second sentence indicating that bupivacaine negatively regulates LRRC3B.'"
+            subject: 42|53   # character position of the text 'bupivacaine'
+            object: 75|81  # character position of the text 'LRRC3B'
+            is_reported_in: PMID:12345678
+         - id: tmkp.Score004
+           type: biolink:xxxx  # sentence confidence score (that sentence was extracted/translated accurately from the pub, not that it is true)
+           value:  0.876
+           authored_by: TMProvider BERT model v0.1  # is this a computational agent that generated the score, or method specifying how it was calculated? 
+         - id: tmkp.Score005
+           type: biolink:xxxx  # subject concept confidence score (confidence that concept was extracted/translated accurately from the pub)
+           value:  ????  # presumably this would be different than the '0.7578' subject score reported for concept confidence from the first pub?
+           authored_by: TMProvider        
+         - id: tmkp.Score006
+           type: biolink:xxxx  # object concept confidence score (confidence that concept was extracted/translated accurately from the pub)
+           value:  ????  # presumably this would be different than the '0.5467' subject score reported for concept confidence from the first pub?
+           authored_by: TMProvider   
+
+
+
+# --------------------------------------------
+
+# TRAPI 1.1 Attribute-based Representation of Matt's Proposed Model (preserving SEPIO-semantics)
+
+  - id: tmkp.Association001
+    category: biolink:ChemicalToGeneAssociation
+    subject: CHEBI:3215          # bupivacaine
+    predicate: biolink:negatively_regulates_entity_to_entity
+    object: NCBIGene:51176
+    attributes: 
+      - attribute_type_id: SEPIO:0000145  # has_evidence_from_source  (you can point to the supporting pub from the Association, or each line of evidence - see below)
+        value: 
+          - PMID:29085514
+          - PMID:12345678
+        value_type_id: biolink:Publication   
+        value_source: TMProvider
+        
+     ## Evidence Line #1
+      - attribute_type_id: SEPIO:0000006  # has_evidence_line
+        value: tmkp.EvidenceLine001
+        value_type_id: SEPIO:000002  # Evidence Line   
+        value_source: TMProvider
+        attributes:
+
+          - attribute_type_id: SEPIO:0000124  # has_support_from_source
+            value: PMID:29085514
+            value_type_id: biolink:Publication   
+            value_source: TMProvider
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: "The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+            value_type_id: SEPIO:0000174  # Statement   
+            value_source: TMProvider
+            attributes:
+ 
+             - attribute_type_id: SEPIO:0000388  # has_subject
+                value: 31|42 
+                value_type_id:  SIO:001056 # character position  
+                value_source: TMProvider           
+
+              - attribute_type_id: SEPIO:0000390  # has_object
+                value: 104|110
+                value_type_id:  SIO:001056 # character position  
+                value_source: TMProvider     
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: 0.99956816
+            value_type_id: EDAM:data_1772     # score 
+            value_type_from_source:  sentence confidence score          
+            value_source: TMProvider 
+
+              - attribute_type_id: SEPIO:0000130  # authored_by
+                value:  TMProvider BERT model v0.1
+                value_type_id:  prov:Agent  
+                value_source: TMProvider  
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: 0.7578
+            value_type_id: EDAM:data_1772     # score 
+            value_type_from_source:  subject confidence score          
+            value_source: TMProvider
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: 0.5467
+            value_type_id: EDAM:data_1772     # score 
+            value_type_from_source:  object confidence score          
+            value_source: TMProvider 
+
+     ## Evidence Line #2
+      - attribute_type_id: SEPIO:0000006  # has_evidence_line
+        value: tmkp.EvidenceLine002
+        value_type_id: SEPIO:000002  # Evidence Line   
+        value_source: TMProvider
+        attributes:
+
+          - attribute_type_id: SEPIO:0000124  # has_support_from_source
+            value: PMID:12345678
+            value_type_id: biolink:Publication   
+            value_source: TMProvider
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: "This is a second sentence indicating that bupivacaine negatively regulates LRRC3B.'"
+            value_type_id: SEPIO:0000174  # Statement   
+            value_source: TMProvider
+            attributes:
+ 
+
+             - attribute_type_id: SEPIO:0000388  # has_subject
+                value: 42|53 
+                value_type_id:  SIO:001056 # character position  
+                value_source: TMProvider           
+
+              - attribute_type_id: SEPIO:0000390  # has_object
+                value: 75|81
+                value_type_id:  SIO:001056 # character position  
+                value_source: TMProvider     
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: 0.876
+            value_type_id: EDAM:data_1772     # score 
+            value_type_from_source:  sentence confidence score          
+            value_source: TMProvider 
+
+              - attribute_type_id: SEPIO:0000130  # authored_by
+                value:  TMProvider BERT model v0.1
+                value_type_id:  prov:Agent  
+                value_source: TMProvider  
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: ?????
+            value_type_id: EDAM:data_1772     # score 
+            value_type_from_source:  subject confidence score          
+            value_source: TMProvider
+
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: ?????
+            value_type_id: EDAM:data_1772     # score 
+            value_type_from_source:  object confidence score          
+            value_source: TMProvider 
+
+
+
+## --------------------------------------------------------------------------------
+
+## Alternate representations of the text from  the pub that the Associaton was mined from
+## (as a SIO:Sentence, with spans as parts, insted of a SEPIO:Statement, with spans as subject/object)
+
+# As Native/Structured SEPIO      
+        - id: tmkp.Sentence001
+          type: SIO:000113  # Sentence
+          text: "The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+          has_part: 
+            - id: tmkp.Span001
+              type: SIO:001056   # character position
+              value: 31|42       # position of the text 'bupivacaine'
+            - id: tmkp.Span002
+              type: SIO:001056   # character position
+              value: 104|110     # position of the text 'LRRC3B'
+          is_part_of: PMID:29085514       
+        
+        
+ # As TRAPI/Attribute-based SEPIO         
+        attributes:
+          - attribute_type_id: SEPIO:0000084  # has_evidence_item
+            value: "The administration of 50 ?g/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+            value_type_id: SIO:000113  # Sentence  
+            value_source: TMProvider
+            attributes:
+              - attribute_type_id: SIO:000028  # has_part
+                value: 31|42 
+                value_type_id:  SIO:001056 # character position  
+                value_source: TMProvider           
+              - attribute_type_id: SIO:000028  # has_part
+                value: 104|110
+                value_type_id:  SIO:001056 # character position  
+                value_source: TMProvider   
+                
+
+## ---------------------------------------------------------------------------------------------
+
+
+## Alternate Proposal (using Study Result objects instead of Evidence Lines)
+
+# TO DO
