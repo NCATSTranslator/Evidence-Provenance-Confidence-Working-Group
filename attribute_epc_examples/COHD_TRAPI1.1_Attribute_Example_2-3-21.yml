@@ -1,0 +1,126 @@
+## Clinical Data Services association generated using a statistical methods based on observed-expected ratios, applied to a specific COHD cohort/dataset
+## Source Data from COHD API (http://cohd.smart-api.info/#/reasoner/query):
+
+
+## Source Data (Represented using TRAPI 0.9?)
+
+      "knowledge_graph": {
+        "edges": [
+          {
+            "id": "ke000000",
+            "source_id": "OMOP:192855",  # "Cancer in situ of urinary bladder"
+            "target_id": "OMOP:4021588", # "Instillation of therapeutic substance into bladder"
+            "type": "biolink:correlated_with"
+            "attributes": [
+              {
+                "name": "confidence_interval",
+                "source": "COHD",
+                "type": "EDAM:data_0951",
+                "value": [
+                  7.374817270079623,
+                  7.872219873513473
+                ]
+              },
+              {
+                "name": "dataset_id",
+                "source": "COHD",
+                "type": "EDAM:data_1048",
+                "value": 3
+              },
+              {
+                "name": "expected_count",
+                "source": "COHD",
+                "type": "EDAM:operation_3438",
+                "value": 0.0846235661353298
+              },
+              {
+                "name": "ln_ratio",
+                "source": "COHD",
+                "type": "EDAM:data_1772",
+                "value": 7.645692224215023
+              },
+              {
+                "name": "observed_count",
+                "source": "COHD",
+                "type": "EDAM:data_0006",
+                "value": 177
+              }
+            ],
+            }
+          ]
+        }
+
+
+ ## TRAPI1.1-Based Representation of this Association (Attribute model enhanced to support EPC semantics)
+ ## Note that I don't populate the attribute_from_source and value_type_from_source fields in most cases b/c I didn't have access to this information
+  edges: 
+  - id: cohd.Association001
+    category: biolink:Association
+    subject: OMOP:192855   # "Cancer in situ of urinary bladder"
+    predicate: biolink:correlated_with
+    object: OMOP:4021588   # "Instillation of therapeutic substance into bladder"
+    attributes:  
+    
+     - attribute_type_id: SEPIO:0000145   # has_evidence_from_source  
+       value: cohd:dataset3               # here I chose to create an identifier for the data set, rather than just '3'
+       value_type_id: EDAM:data_1048      # Database ID . . . but might it be more appropritate to use IAO:0000100 'data set'?
+       value_source: COHD
+       
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
+       value: 177
+       value_type_id: EDAM:data_0006  # data . . . but longer term we should mint/use curies for the more specific 'observed count' data type.
+       value_type_from_source: observed count   # this is cohd's name for the actual type of data        
+       value_source: COHD 
+ 
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
+       value: 0.0846235661353298
+       value_type_id: EDAM:operation_3438  # calculation . . . but longer term we should mint/use curies for the more specific 'expected count' data type.
+       value_type_from_source: expected count  # this is cohd's name for the actual type of data      
+       value_source: COHD
+     
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence 
+       attribute_from_source: null  
+       value: 7.645692224215023
+       value_type_id: EDAM:data_1772  # score . . . but longer term we should mint/use curies for the more specific 'ln ratio' data type.
+       value_type_from_source: ln ratio  # this is cohd's name for the actual type of data         
+       value_source: COHD
+
+     - attribute_type_id: SEPIO:0000440  # has_supporting_evidence  
+       value: 
+         - 7.374817270079623
+         - 7.872219873513473
+       value_type_id: EDAM:data_0951  # statistical estimate score  . . . but longer term we should mint/use curies for the more specific 'confidence interval' data type.
+       value_type_from_source: confidence interval  # this is cohd's name for the actual type of data        
+       value_source: COHD
+       description: confidence interval for the ln ratio value
+ 
+ 
+ 
+# Since the confidence intervals are related to the ln_ratio, we could capture these inside the ln_ratio object in a nested Attribute
+#    - attribute_type_id: SEPIO:0000440   # has_supporting_evidence 
+#      value: 7.645692224215023
+#      value_type_id: EDAM:data_1772  
+#      value_type_from_source: ln ratio           
+#      value_source: COHD
+#      attributes:
+#        - attribute_type_id: SEPIO:XXXXXXX  # has_confidence_interval  
+#          value: 
+#            - 7.374817270079623
+#            - 7.872219873513473
+#          value_type_id: EDAM:data_0951  
+#          value_type_from_source: confidence_interval          
+#          value_source: COHD
+
+# Proposing an Attribute to capture the statistical/computational method used to generate the Association
+#    - attribute_type_id: SEPIO:0000141  # was_specified_by
+#      value: cohd.association/obsExpRatio
+#      value_type_id: EDAM:operation_3658 # statistical inference
+
+
+# Proposing an Attribute to capture the study group population that defines the context in which the association is held to be true
+#    - attribute_type_id: biolink:populationContextQualifier
+#      attribute_from_source:  null
+#      value: cohd:cohort3-100
+#      value_type_id: STATO:0000193 # study group population (eventually we will define a term for this in Biolink)
+
+  
