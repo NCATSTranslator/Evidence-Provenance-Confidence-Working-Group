@@ -1,5 +1,6 @@
 
-# Bill's Proposal for TRAPI-compliant representation of a TMKP Association with EPC, allowing one level of Attribute nesting 
+# Bill's Proposal for TRAPI-compliant representation of a TMKP Association with EPC, allowing one level of Attribute nesting.
+# Only one of the two supporting sentences in his example are shown. 
 # See here: https://github.com/biolink/kgx/issues/174#issuecomment-889460580
 
 - id: hcR2-6QIJratLDFyFxwcSO6UW1M	
@@ -92,58 +93,10 @@
           attribute_source: infores:text-mining-provider-targeted           
         
         
-    - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source
-      value: "This is a second sentence indicating that bupivacaine negatively regulates LRRC3B."
-      value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'  
-      description: A sentence asserting the Biolink association represented by the parent edge     
-      attribute_source: infores:pubmed
-      attributes:
-        - attribute_type_id: BFO:0000050  # part_of
-          value: PMID:12345678
-          value_type_id: biolink:Publication
-          value_url: https://pubmed.ncbi.nlm.nih.gov/12345678/
-          description: The document that contains the sentence that asserts the Biolink association represented by the parent edge
-          attribute_source: infores:pubmed
-        - attribute_type_id: biolink:has_publication_type # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
-          value: Journal Article
-          value_type_id: MESH:U000020 # publication type
-          description: The publication type(s) for the document in which the sentence appears, as defined by PubMed; pipe-delimited
-          attribute_source: infores:pubmed
-        - attribute_type_id: biolink:has_year_published # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
-          value: 2021
-          value_type_id: UO:0000036  # year
-          description: The year the document in which the sentence appears was published
-          attribute_source: infores:pubmed
-        - attribute_type_id: BFO:0000050 # part_of
-          value: IAO:0000315 # abstract
-          value_type_id: IAO_0000314 # document_part
-          description: The part of the document where the sentence is located, e.g. title, abstract, introduction, conclusion, etc.
-          attribute_source: infores:pubmed
-        - attribute_type_id: SEPIO:0000440  # has_supporting_evidence   
-          value: 0.876
-          value_type_id: EDAM:data_1772     # score 
-          description: The score provided by the underlying algorithm that asserted this sentence to represent the assertion specified by the parent edge
-          attribute_source: infores:text-mining-provider-targeted
-        - attribute_type_id: biolink:has_identifier # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
-          value: HCX2k2hTBVNSoReGxxsGcL33jsg
-          value_type_id: EDAM:data_2091 # EDAM:accession
-          description: A unique identifier for the combination of document/sentence/assertion.
-          attribute_source: infores:text-mining-provider-targeted
-        - attribute_type_id: SIO:000028  # has part
-          value: '42|53'
-          value_type_id: biolink:SubjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
-          description: The start and end character offsets relative to the sentence for the subject of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
-          attribute_source:  infores:text-mining-provider-targeted
-        - attribute_type_id: SIO:000028  # has part
-          value: '75|81'
-          value_type_id: biolink:ObjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
-          description: The start and end character offsets relative to the sentence for the object of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
-          attribute_source: infores:text-mining-provider-targeted
-
-
 # -----------------------------------------------------------------------------------------------#
 
-# Matt's Proposal for TRAPI-compliant representation of a TMKP Association with EPC, allowing one level of Attribute nesting 
+# Matt's Proposal for TRAPI-compliant representation of a TMKP Association with EPC, allowing one level of Attribute nesting.
+# Only one of the two supporting sentences in this example are modeled.
 # See here: https://lucid.app/lucidchart/7f44b940-c9f9-4ade-bcd2-83b5e6182076/edit?beaconFlowId=866719F9696348D5&page=di_9PZXxfgly#
 
 - id: hcR2-6QIJratLDFyFxwcSO6UW1M	
