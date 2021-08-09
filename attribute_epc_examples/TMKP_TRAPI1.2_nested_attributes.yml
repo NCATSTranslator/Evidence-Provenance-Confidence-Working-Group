@@ -1,0 +1,236 @@
+
+# Bill's Proposal for TRAPI-compliant representation of a TMKP Association with EPC, allowing one level of Attribute nesting 
+# See here: https://github.com/biolink/kgx/issues/174#issuecomment-889460580
+
+- id: hcR2-6QIJratLDFyFxwcSO6UW1M	
+  category: biolink:ChemicalToGeneAssociation
+  subject: CHEBI:3215          # bupivacaine
+  predicate: biolink:entity_negatively_regulates_entity
+  object: PR:000031567         #  LRRC3B 
+  attributes: 
+    - attribute_type_id: biolink:original_knowledge_source
+      value: infores:text-mining-provider-targeted
+      value_type_id: biolink:InformationResource
+      description: The Text Mining Provider Targeted Biolink Association KP from NCATS Translator provides text-mined assertions from the biomedical literature.
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: biolink:supporting_data_source
+      value: infores:pubmed
+      value_type_id: biolink:InformationResource
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: biolink:has_evidence_count ## NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
+      value: 2
+      value_type_id: biolink:EvidenceCount ## NOTE: THIS CLASS DOES NOT EXIST IN BIOLINK
+      description: The count of the number of sentences that assert this edge
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: SEPIO:0000168  # confidence_score   
+      value: 0.9378
+      value_type_id: biolink:ConfidenceLevel  # MHB: Is this Biolink meant to hold a qualitative term, or can it also be a quantitative score?
+      description: An aggregate confidence score that combines evidence from all sentences that support the edge
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source  # MHB: This property is meant to point at Information REsources that provide evidence, not sentences.   We should add a has_supporting_text  or has_text_evidence edge property to Biolink to cover this (pending decision about how data/info type specific edge properties to capture supporting data/evidence will be named/defined. 
+      value: "The administration of 50 µg/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+      value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'     # MHB: I would go with 'text', as this covers knowledge mined from non-sentence text. 
+      description: A sentence asserting the Biolink association represented by the parent edge     
+      attribute_source: infores:pubmed
+      attributes:
+
+        - attribute_type_id: BFO:0000050  # part_of
+          value: PMID:29085514
+          value_type_id: biolink:Publication
+          value_url: https://pubmed.ncbi.nlm.nih.gov/29085514/
+          description: The document that contains the sentence that asserts the Biolink association represented by the parent edge
+          attribute_source: infores:pubmed
+
+          # MHB: This Attribute hangs from the sentence, and thus would be interpreted as the 'publication type' for the sentence, which doesnt really make sense. This Attribute should really be nested a further level down so it describes the Publication.
+        - attribute_type_id: biolink:has_publication_type # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK. 
+          value: Journal Article
+          value_type_id: MESH:U000020 # publication type
+          description: The publication type(s) for the document in which the sentence appears, as defined by PubMed; pipe-delimited
+          attribute_source: infores:pubmed
+ 
+         # MHB: This Attribute hangs from the sentence, and thus would be interpreted as the 'year published' for the sentence, rather than the year of the publication. This Attribute should really be nested a further level down so it describes the Publication.
+       - attribute_type_id: biolink:has_year_published # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK  
+          value: 2017
+          value_type_id: UO:0000036  # year
+          description: The year the document in which the sentence appears was published
+          attribute_source: infores:pubmed
+          
+         # MHB: part of here points to a type of publication section, not an instance.  Different than how part_of is used above to point to the pub that the sentence is a part of.
+        - attribute_type_id: BFO:0000050 # part_of
+          value: IAO:0000315 # abstract
+          value_type_id: IAO_0000314 # document_part
+          description: The part of the document where the sentence is located, e.g. title, abstract, introduction, conclusion, etc.
+          attribute_source: infores:pubmed
+
+         # MHB: First, this has_supporting_evidence Attribute hangs from the sentence, but a TMKP sentence score isn't considered evidence for the sentence. We need to rename this propery, or move it if we want to say that this is a piece of evidence for the edge (here is where we would define a data/info type specific suporting data / evidence property for each specific type of info/data referenced as evidence/support for an edge, e.g. has_supporting_sentence_score'
+        - attribute_type_id: SEPIO:0000440  # has_supporting_evidence   
+          value: 0.99956816
+          value_type_id: EDAM:data_1772     # score 
+          description: The score provided by the underlying algorithm that asserted this sentence to represent the assertion specified by the parent edge
+          
+          attribute_source: infores:text-mining-provider-targeted
+        - attribute_type_id: biolink:has_identifier # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
+          value: HCX2k2hTBVNSoReGxxsGcL33jsg
+          value_type_id: EDAM:data_2091 # EDAM:accession
+          description: A unique identifier for the combination of document/sentence/assertion.
+          attribute_source: infores:text-mining-provider-targeted
+          
+        - attribute_type_id: SIO:000028  # has part
+          value: '31|42'
+          value_type_id: biolink:SubjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
+          description: The start and end character offsets relative to the sentence for the subject of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
+          attribute_source:  infores:text-mining-provider-targeted
+          
+        - attribute_type_id: SIO:000028  # has part
+          value: '104|110'
+          value_type_id: biolink:ObjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
+          description: The start and end character offsets relative to the sentence for the object of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
+          attribute_source: infores:text-mining-provider-targeted           
+        
+        
+    - attribute_type_id: SEPIO:0000438  # has_supporting_evidence_from_source
+      value: "This is a second sentence indicating that bupivacaine negatively regulates LRRC3B."
+      value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'  
+      description: A sentence asserting the Biolink association represented by the parent edge     
+      attribute_source: infores:pubmed
+      attributes:
+        - attribute_type_id: BFO:0000050  # part_of
+          value: PMID:12345678
+          value_type_id: biolink:Publication
+          value_url: https://pubmed.ncbi.nlm.nih.gov/12345678/
+          description: The document that contains the sentence that asserts the Biolink association represented by the parent edge
+          attribute_source: infores:pubmed
+        - attribute_type_id: biolink:has_publication_type # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
+          value: Journal Article
+          value_type_id: MESH:U000020 # publication type
+          description: The publication type(s) for the document in which the sentence appears, as defined by PubMed; pipe-delimited
+          attribute_source: infores:pubmed
+        - attribute_type_id: biolink:has_year_published # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
+          value: 2021
+          value_type_id: UO:0000036  # year
+          description: The year the document in which the sentence appears was published
+          attribute_source: infores:pubmed
+        - attribute_type_id: BFO:0000050 # part_of
+          value: IAO:0000315 # abstract
+          value_type_id: IAO_0000314 # document_part
+          description: The part of the document where the sentence is located, e.g. title, abstract, introduction, conclusion, etc.
+          attribute_source: infores:pubmed
+        - attribute_type_id: SEPIO:0000440  # has_supporting_evidence   
+          value: 0.876
+          value_type_id: EDAM:data_1772     # score 
+          description: The score provided by the underlying algorithm that asserted this sentence to represent the assertion specified by the parent edge
+          attribute_source: infores:text-mining-provider-targeted
+        - attribute_type_id: biolink:has_identifier # NOTE: THIS PREDICATE DOES NOT EXIST IN BIOLINK
+          value: HCX2k2hTBVNSoReGxxsGcL33jsg
+          value_type_id: EDAM:data_2091 # EDAM:accession
+          description: A unique identifier for the combination of document/sentence/assertion.
+          attribute_source: infores:text-mining-provider-targeted
+        - attribute_type_id: SIO:000028  # has part
+          value: '42|53'
+          value_type_id: biolink:SubjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
+          description: The start and end character offsets relative to the sentence for the subject of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
+          attribute_source:  infores:text-mining-provider-targeted
+        - attribute_type_id: SIO:000028  # has part
+          value: '75|81'
+          value_type_id: biolink:ObjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
+          description: The start and end character offsets relative to the sentence for the object of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
+          attribute_source: infores:text-mining-provider-targeted
+
+
+# -----------------------------------------------------------------------------------------------#
+
+# Matt's Proposal for TRAPI-compliant representation of a TMKP Association with EPC, allowing one level of Attribute nesting 
+# See here: https://lucid.app/lucidchart/7f44b940-c9f9-4ade-bcd2-83b5e6182076/edit?beaconFlowId=866719F9696348D5&page=di_9PZXxfgly#
+
+- id: hcR2-6QIJratLDFyFxwcSO6UW1M	
+  category: biolink:ChemicalToGeneAssociation
+  subject: CHEBI:3215          # bupivacaine
+  predicate: biolink:entity_negatively_regulates_entity
+  object: PR:000031567         #  LRRC3B 
+  attributes: 
+    - attribute_type_id: biolink:original_knowledge_source
+      value: infores:text-mining-provider-targeted
+      value_type_id: biolink:InformationResource
+      description: The Text Mining Provider Targeted Biolink Association KP from NCATS Translator provides text-mined assertions from the biomedical literature.
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: biolink:supporting_data_source
+      value: infores:pubmed
+      value_type_id: biolink:InformationResource
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: biolink:has_evidence_count ## NOT CURRENTLY IN BIOLINK.
+      value: 2
+      value_type_id: biolink:EvidenceCount ## NOTE: THIS CLASS DOES NOT EXIST IN BIOLINK  # MHB: could jsut say 'count' here (so can use existing ontology term)...but we dont really need to populate the value type field (esp if it is redundant with the attribute_type_id) 
+      description: The count of the number of sentences that assert this edge
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: biolink:tmkp_confidence_score  
+      value: 0.9378
+      value_type_id: biolink:ConfidenceLevel
+      
+      description: An aggregate confidence score that combines evidence from all sentences that support the edge
+      attribute_source: infores:text-mining-provider-targeted
+
+    - attribute_type_id: biolink:supporting_study_result   
+      value: HCX2k2hTBVNSoReGxxsGcL33jsg       ## This would be the identifier minted by TMKP for this organizational object. Discuss if this is what we think should go in the value field for this approach (as opposed to a label or description of the result)
+      value_type_id: biolink:TextMiningResult       ## NOT CURRENTLY IN BIOLINK. We would add a general 'Study Result' class, and then subtypes for specific types of results where we want to extend the model with new slots.  
+      description: a single result from running NLP tool over a piece of text     
+      attribute_source: infores:text-mining-provider-targeted    
+      attributes:
+ 
+      
+        - attribute_type_id: biolink:source_publication    ## MHB: NOT CURRENTLY IN BIOLINK.  Or use 'supporting_publication'?
+          value: PMID:29085514
+          value_type_id: biolink:Publication
+          value_url: https://pubmed.ncbi.nlm.nih.gov/29085514/
+          description: The document that contains the sentence that asserts the Biolink association represented by the parent edge
+          attribute_source: infores:pubmed
+
+        - attribute_type_id: biolink:source_publication_type ## MHB: NOT CURRENTLY IN BIOLINK. Note that this should hang from the Publication. But this would require a third level of Attributes which TRAPI does not allow for. Or require that TRAPI create and pass the json for a Publication node in its messages, where we could capture inherent characteristics of publications. 
+          value: Journal Article
+          value_type_id: MESH:U000020 # publication type
+          description: The publication type(s) for the document in which the sentence appears, as defined by PubMed; pipe-delimited
+          attribute_source: infores:pubmed
+
+        - attribute_type_id: biolink:source_publication_year  ## NOT CURRENTLY IN BIOLINK. Note that this should hang from the Publication.
+          value: 2017
+          value_type_id: UO:0000036  # year
+          description: The year the document in which the sentence appears was published
+          attribute_source: infores:pubmed
+
+        - attribute_type_id: biolink:source_text_located_in  ## NOT CURRENTLY IN BIOLINK. 
+          value: IAO:0000315 # abstract
+          value_type_id: IAO_0000314 # document_part 
+          description: The part of the document where the sentence is located, e.g. title, abstract, introduction, conclusion, etc.
+          attribute_source: infores:pubmed
+ 
+       - attribute_type_id: biolink:extraction_confidence_score   ## MHB: Is this an accurate/precise name for this property?  (tmkp suggested has_supporting_evidence - but the extraction score is not 'evidence for' the sentence.
+          value: 0.9995681
+          value_type_id: EDAM:data_1772     # score 
+          description: The score provided by the underlying algorithm that asserted this sentence to represent the assertion specified by the parent edge
+          attribute_source: infores:text-mining-provider-targeted
+
+        - attribute_type_id: biolink:id          # MHB: can't we just use the existing id slot here? 
+          value: HCX2k2hTBVNSoReGxxsGcL33jsg     # MHB: Think on how we will structure these ids minted for organizational nodes.  Should they be curies? e.g. tmkpHCX2k2hTBVNSoReGxxsGcL33jsg?
+          value_type_id: EDAM:data_2091 # EDAM:accession
+          description: A unique identifier for the combination of document/sentence/assertion.
+          attribute_source: infores:text-mining-provider-targeted
+
+        - attribute_type_id: biolink:subject_text_location
+          value: '31|42'
+          value_type_id: biolink:SubjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
+          description: The start and end character offsets relative to the sentence for the subject of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
+          attribute_source:  infores:text-mining-provider-targeted
+
+        - attribute_type_id: biolink:object_text_location
+          value: '104|110'
+          value_type_id: biolink:ObjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
+          description: The start and end character offsets relative to the sentence for the object of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
+          attribute_source: infores:text-mining-provider-targeted           
+        
+  
