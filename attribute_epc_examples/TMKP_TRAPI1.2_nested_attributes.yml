@@ -38,7 +38,7 @@
       description: a single result from running NLP tool over a piece of text     
       attribute_source: infores:text-mining-provider-targeted    
       attributes: 
-      
+   
         - attribute_type_id: biolink:source_publication    ## MHB: NOT CURRENTLY IN BIOLINK.  Or use 'supporting_publication'?
           value: PMID:29085514
           value_type_id: biolink:Publication
