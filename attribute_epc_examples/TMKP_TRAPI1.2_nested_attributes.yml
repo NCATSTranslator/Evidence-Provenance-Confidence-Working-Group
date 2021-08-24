@@ -39,56 +39,60 @@
       attribute_source: infores:text-mining-provider-targeted    
       attributes: 
    
-        - attribute_type_id: biolink:source_publication    ## MHB: NOT CURRENTLY IN BIOLINK.  Or use 'supporting_publication'?
+        - attribute_type_id: biolink:supporting_document    ## MHB: NOT CURRENTLY IN BIOLINK.  More general form of 'supporting_publication'?
           value: PMID:29085514
           value_type_id: biolink:Publication
           value_url: https://pubmed.ncbi.nlm.nih.gov/29085514/
           description: The document that contains the sentence that asserts the Biolink association represented by the parent edge
           attribute_source: infores:pubmed
 
-        - attribute_type_id: biolink:source_publication_type ## MHB: NOT CURRENTLY IN BIOLINK. Note that this should hang from the Publication. But this would require a third level of Attributes which TRAPI does not allow for. Or require that TRAPI create and pass the json for a Publication node in its messages, where we could capture inherent characteristics of publications. 
+        - attribute_type_id: biolink:supporting_document_type ## MHB: NOT CURRENTLY IN BIOLINK. Note that this should hang from the Document. But this would require a third level of Attributes which TRAPI does not allow for. Or require that TRAPI create and pass the json for a Publication node in its messages, where we could capture inherent characteristics of documents. 
           value: Journal Article
           value_type_id: MESH:U000020 # publication type
           description: The publication type(s) for the document in which the sentence appears, as defined by PubMed; pipe-delimited
           attribute_source: infores:pubmed
 
-        - attribute_type_id: biolink:source_publication_year  ## NOT CURRENTLY IN BIOLINK. Note that this should hang from the Publication.
+        - attribute_type_id: biolink:supporting_document_year  ## NOT CURRENTLY IN BIOLINK. Note that this should hang from the Publication.
           value: 2017
           value_type_id: UO:0000036  # year
           description: The year the document in which the sentence appears was published
           attribute_source: infores:pubmed
 
-        - attribute_type_id: biolink:source_text_located_in  ## NOT CURRENTLY IN BIOLINK. 
+        - attribute_type_id: biolink:supporting_text          
+          value: "The administration of 50 µg/ml bupivacaine promoted maximum breast cancer cell invasion, and suppressed LRRC3B mRNA expression in cells."
+          value_type_id: EDAM:data_3671     # text, or SIO:000113 'sentence'     # MHB: I would go with 'text', as this covers knowledge mined from non-sentence text. 
+          description: A sentence asserting the Biolink association represented by the parent edge     
+          attribute_source: infores:text-mining-provider-targeted
+          
+        - attribute_type_id: biolink:supporting_text_located_in  ## NOT CURRENTLY IN BIOLINK. 
           value: IAO:0000315 # abstract
           value_type_id: IAO_0000314 # document_part 
           description: The part of the document where the sentence is located, e.g. title, abstract, introduction, conclusion, etc.
           attribute_source: infores:pubmed
- 
-       - attribute_type_id: biolink:extraction_confidence_score   
-          value: 0.9995681
-          value_type_id: EDAM:data_1772     # score 
-          description: The score provided by the underlying algorithm that asserted this sentence to represent the assertion specified by the parent edge
-          attribute_source: infores:text-mining-provider-targeted
 
-        - attribute_type_id: biolink:id          
-          value: tmkp:HCX2k2hTBVNSoReGxxsGcL33jsg     # MHB: Think on how we will structure  ids minted for organizational nodes.  Should they be curies as shown here?
-          value_type_id: EDAM:data_2091 # EDAM:accession
-          description: A unique identifier for the combination of document/sentence/assertion.
-          attribute_source: infores:text-mining-provider-targeted
-
-        - attribute_type_id: biolink:subject_text_location
+        - attribute_type_id: biolink:subject_text_locationin_text
           value: '31|42'
           value_type_id: biolink:SubjectCharacterPosition # SIO:001056 (character position) 
           description: The start and end character offsets relative to the sentence for the subject of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
           attribute_source:  infores:text-mining-provider-targeted
 
-        - attribute_type_id: biolink:object_text_location
+        - attribute_type_id: biolink:object_location_in_text
           value: '104|110'
           value_type_id: biolink:ObjectCharacterPosition # SIO:001056 (character position) is not specific enough -- NOT PRESENT IN BIOLINK
           description: The start and end character offsets relative to the sentence for the object of the assertion represented by the parent edge; start and end offsets are pipe-delimited, discontinuous spans are delimited using commas
           attribute_source: infores:text-mining-provider-targeted           
-        
-  
+ 
+       - attribute_type_id: biolink:extraction_confidence_score   
+          value: 0.9995681
+          value_type_id: EDAM:data_1772     # score 
+          description: The score provided by the underlying algorithm that asserted this sentence to represent the assertion specified by the parent edge
+          attribute_source: infores:text-mining-provider-targeted        
+
+        - attribute_type_id: biolink:id          
+          value: tmkp:HCX2k2hTBVNSoReGxxsGcL33jsg     # MHB: Think on how we will structure  ids minted for organizational nodes.  Should they be curies as shown here?
+          value_type_id: EDAM:data_2091 # EDAM:accession
+          description: A unique identifier for the combination of document/sentence/assertion.
+          attribute_source: infores:text-mining-provider-targeted 
  
 
  

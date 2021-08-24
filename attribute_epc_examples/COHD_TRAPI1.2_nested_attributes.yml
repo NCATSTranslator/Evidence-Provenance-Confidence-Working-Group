@@ -289,8 +289,15 @@
                     "object": "UMLS:C4039003",
                     "attributes": [
                             {
-                            "attribute_source": "COHD",
-                            "attribute_type_id": "biolink: supporting_dataset", # At the top level we would capture all datasets supporting the edge - as aggregated from datasets cited in each Result below. We do an analogous thing with supporting publications in the TMKP example. 
+                            "attribute_source": "infores:COHD",
+                            "attribute_type_id": "biolink: original_knowledge_source",
+                            "description": "The COHD KP is defines associations between biomedical concepts based on statistical analysis of clinical/EHR data",
+                            "value": infores:COHD,
+                            "value_type_id": "biolink:InformationResource"
+                            },
+                            {
+                            "attribute_source": "infores:COHD",
+                            "attribute_type_id": "biolink:supporting_dataset", # At the top level we would capture all datasets supporting the edge - as aggregated from datasets cited in each Result below. We do an analogous thing with supporting publications in the TMKP example. 
                             "description": "Dataset ID within COHD",
                             "original_attribute_name": "dataset_id",
                             "value": 3,
@@ -332,10 +339,10 @@
                             # Note here we add the source/input dataset used each study result - as there may be cases where all the COHD methods are run on >1 dataset to support an association between the same two concepts/variables.  By analogy, in the TMKP example we caputre the source publication in each TextMiningResult, even if it is the same for all Results supporting the edge.         
                                 {      
                                 "attribute_source": "COHD",
-                                "attribute_type_id": "biolink: source_dataset", # formerly "biolink:provided_by"
+                                "attribute_type_id": "biolink:supporting_dataset", # formerly "biolink:provided_by"
                                 "description": "Dataset ID within COHD",
                                 "original_attribute_name": "dataset_id",
-                                "value": 3,
+                                "value": COHD:3,                            # Suggested to give globally unique CURIE / IRI identifiers for things like datasets
                                 "value_type_id": "EDAM:data_1048"
                                 }
                               ]
@@ -376,10 +383,10 @@
                                 },
                                 {      
                                 "attribute_source": "COHD",
-                                "attribute_type_id": "biolink: source_dataset", 
+                                "attribute_type_id": "biolink:supporting_dataset", 
                                 "description": "Dataset ID within COHD",
                                 "original_attribute_name": "dataset_id",
-                                "value": 3,
+                                "value": COHD:3,                        # Suggested to give globally unique CURIE / IRI identifiers for things like datasets
                                 "value_type_id": "EDAM:data_1048"
                                 }                                
                               ]
@@ -422,10 +429,10 @@
                                 },
                                 {      
                                 "attribute_source": "COHD",
-                                "attribute_type_id": "biolink: source_dataset", 
+                                "attribute_type_id": "biolink:supporting_dataset", 
                                 "description": "Dataset ID within COHD",
                                 "original_attribute_name": "dataset_id",
-                                "value": 3,
+                                "value": COHD:3,
                                 "value_type_id": "EDAM:data_1048"
                                 }
                               ]
@@ -479,7 +486,7 @@
                                 },
                                 {      
                                 "attribute_source": "COHD",
-                                "attribute_type_id": "biolink: source_dataset", # formerly "biolink:provided_by"
+                                "attribute_type_id": "biolink:supporting_dataset", # formerly "biolink:provided_by"
                                 "description": "Dataset ID within COHD",
                                 "original_attribute_name": "dataset_id",
                                 "value": 3,
