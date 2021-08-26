@@ -310,7 +310,7 @@
                             "attribute_type_id": "biolink:supporting_study_result",
                             "description": "A study result describing the initial count of concepts",
                             "value": "tmkp:HCX2k2hTBVNSoReGxxsGcL33jsg",
-                            "value_type_id": "biolink:TextMiningResult",
+                            "value_type_id": "biolink:ConceptCountAnalysisResult",
                             "attributes": [                     
                                 {
                                 "attribute_source": "COHD",
