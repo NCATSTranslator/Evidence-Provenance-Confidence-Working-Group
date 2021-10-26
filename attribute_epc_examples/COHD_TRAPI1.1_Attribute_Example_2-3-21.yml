@@ -2,7 +2,7 @@
 ## Source Data from COHD API (http://cohd.smart-api.info/#/reasoner/query):
 
 
-## Source Data (Represented using TRAPI 0.9?)
+## Source Data (Represented using TRAPI 1.0? 0.9?)
 
       "knowledge_graph": {
         "edges": [
@@ -51,7 +51,7 @@
         }
 
 
- ## TRAPI1.1-Based Representation of this Association (Attribute model enhanced to support EPC semantics)
+ ## TRAPI 1.1-Based Representation of this Association (Attribute model enhanced to support EPC semantics)
  ## Note that I don't populate the attribute_from_source and value_type_from_source fields in most cases b/c I didn't have access to this information
   edges: 
   - id: cohd.Association001

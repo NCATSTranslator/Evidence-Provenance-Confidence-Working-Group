@@ -1,4 +1,6 @@
 ## Native SEPIO vs Attribute-Based SEPIO Comparison
+## Demonstrates how a TRAPI Attirbute-based representation can be just another way to implement the semantics of the native structured SEPIO model
+## (where the domain semantics are defined in the data, instead of in the schema) (so constraints for standardization need to be defined external to the schema)
  
 ## Demonstration EPC Scenario:
    ## Assertion/Association: ChemicalX - interacts_with - GeneY, from ChEMBL
@@ -6,8 +8,9 @@
        ## the agent who authored the assertion: ORCID:0000-0001-8732-0928
        ## a publication providing evidence for the assertion: PMID:12345
        ## the type of evidence used:  ECO:00000006 (experimental evidence)
-       ## data used as evidence: a p-value of 0.0000316
-       ## date the evidence was generated: 2018-05-21
+       ## the data used as evidence: a p-value of 0.0000316
+       ## date the data used as evidence was generated: 2018-05-21
+       ## who generated the data used as evidence
 
 
 ## Native, Structured SEPIO representation 

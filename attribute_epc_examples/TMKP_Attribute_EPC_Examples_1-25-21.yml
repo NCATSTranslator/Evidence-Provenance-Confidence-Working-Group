@@ -95,6 +95,9 @@ edges:
 
 # ---------------------------------------------------------------------------------------------------------
 
+id	  category   subject  	predicate	object	  relation	  biolink_epc_property_1    biolink_epc_property_2	category	publications
+urn:uuid:5b06e86f-d768-4cd9-ac27-abe31e95ab1e	HGNC:11603	biolink:contributes_to	MONDO:0005002	RO:0003304	MonarchArchive:gwascatalog	biolink:GeneToDiseaseAssociation	PMID:26634245|PMID:26634244
+
 
 ## Native/Structured SEPIO Representation of Matt's Proposed Model (see Lucidchart diagram for high-level view)
   - id: tmkp.Association001
@@ -282,7 +285,7 @@ edges:
 
 ## --------------------------------------------------------------------------------
 
-## Alternate representations of the text from  the pub that the Associaton was mined from
+## Alternate representations of the text from the pub that the Associaton was mined from
 ## (as a SIO:Sentence, with spans as parts, insted of a SEPIO:Statement, with spans as subject/object)
 
 # As Native/Structured SEPIO      
@@ -318,6 +321,8 @@ edges:
 
 ## ---------------------------------------------------------------------------------------------
 
+
+## Additional Use Case - Associations supported by multiple sentnces from the same paper (where these all support one line of evidence)
 
 ## Alternate Proposal (using Study Result objects instead of Evidence Lines)
 
