@@ -1,4 +1,4 @@
-# Casey's Proposal for TRAPI-compliant representation of a COHD Association with EPC, allowing one level of Attribute nesting.
+# Casey's Proposal for TRAPI-compliant representation of a COHD Association with EPC, with no Attribute nesting (one level of Attributes).
 
 # See here: https://github.com/NCATSTranslator/minihackathons/issues/47#issuecomment-865203012
 
@@ -142,7 +142,7 @@
  
 #############################################################################################
  
-# Updated names for edge properties used in attrbute_id field, to reflect proposed Biolink additions - but otherwise unchanged         
+# Updated names for edge properties used in attrbute_id field, to reflect proposed Biolink additions - but otherwise unchanged - wtill no Attribute nesting.        
            "edges": {
                 "ke000000": {
                     "subject": "MONDO:0021113"
@@ -281,7 +281,7 @@
             
 #############################################################################################
 
-# Adding 'Study Result' attributes as organizing objects, to group data from each separate analysis. This creates a two-level model 
+# Adding 'Study Result' attributes as organizing objects, to group data from each separate analysis. Requires Attribute nesting, to create a two-level model 
            "edges": {
                 "ke000000": {
                     "subject": "MONDO:0021113"
