@@ -2,10 +2,11 @@
 
 ### Plain language expression of what each record asserts to be true
   - **Record A:** Fenofibrate binds to PPARA protein (CTD)
-  -  **Record B:** Fenofibrate results in increased activity of PPARA protein (CTD)
+  - **Record B:** Fenofibrate results in increased activity of PPARA protein (CTD)
   - **Record C:** Fenofibrate results in increased expression of PPARA (CTD)
-  - **Record D:** Bezofuran results in decreased degradation of PPARA (CTD)
-  - **Record E:** Bezofuran increases the activity of PPARA (CTD)
+  - **Record D:** Bezofuran increases the activity of PPARA (CTD)
+  - **Record E:** Bezofuran results in decreased degradation of PPARA (CTD)
+  - **Record F:** Okadaic Acid results in increased phosphorylation of PPARA (CTD)
 
 
 ###  Structured Bioink Representations
@@ -73,7 +74,7 @@ object_direction: increased
 
 ### Q1: What Chemical Entities affect PPARA?
 
-**Expected Results:** records B, C, D, E
+**Expected Results:** Fenofibrate, Bezofuran, and Okadoaic Acid - based on records B, C, D, E, F
 
 **Structured Query:**
 ````
@@ -106,7 +107,7 @@ object_direction: increased
 
 ## Q2: What Chemical Entities increase the activity of PPARA?
 
-**Expected Results:** records B, E
+**Expected Results:** Fenofibrate and Bezofuran - based on records B, D
 
 **Structured Query:**
 
@@ -158,7 +159,7 @@ object_direction: increased
 
 ### Q3: What compounds increase the amount or activity of PPARA?
 
-**Expected Results:**  records B, C, D, E
+**Expected Results:**  Fenofibrate and Bezofuran - based on records B, C, D, E
 
 **Structured Query:**     
 ````
@@ -229,14 +230,14 @@ object_direction: increased
 ````
  
 **Questions:**
-- Any way to infer decreased degradation --> increased abundance so D returned even if not explicitly specified?  Easy to do when aspect and direction were composed - by placing things in hierarchical relationships.  How do this when decomposed? Need more complex rules.
+- Is there a way we could infer decreased degradation --> increased abundance so Record E returned even if not explicitly specified?  This was easier to do when aspect and direction were composed in a single predicate - by placing 'decreases degradation of' under 'increases abundance of' in the predicate hierarchy. But with aspect and directions now split into separate qualifiers, how might we derive the same inference? Will need more complex rules.
  
  --------
  
  ### Q4: What compounds increase the activity or phosphorylation of PPARA but not its abundance 
- (Vlado query, but modified 'synthesis' -> 'phosphorylation', as 'synthesis no longer in CTD data) (modified 'expression' -> 'abundance', to illustrate need for hierarchical inference) 
+Based on Vlado's example query, but modified 'synthesis' -> 'phosphorylation' (as 'synthesis no longer in CTD data), and modified 'expression' -> 'abundance' (to illustrate need for hierarchical inference) 
   
- **Expected Results:** E (Bezofuran), F (Okadaic Acid), but not B (Fenofibrate)  - because Fenofibrate also increases expression (abundance) of PPARA.
+ **Expected Results:**  Okadaic Acid (based on record F), but not Fenofibrate or Bezofuran despite records Band E asserting these to increase the activity of PPARA - because Fenofibrate and Bezofuran also increases abundance of PPARA (Fenofibrate via increasing its expression, and Bezofuran via decreasing its degradation)
    
    **Structured Query:**
 ````
