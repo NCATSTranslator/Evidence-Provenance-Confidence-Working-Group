@@ -8,6 +8,12 @@
   - **Record E:** Bezofuran results in decreased degradation of PPARA (CTD)
   - **Record F:** Okadaic Acid results in increased phosphorylation of PPARA (CTD)
 
+TO DO: Add examples to support a drug prediction reasoning path:
+Chemical - negatively regulates (dec activity of) -  Gene/Protein - physically interacts with - Gene/Protein - causes/gene assoc with - Condition
+
+- Mifepristone results in decreased activity of PPARA protein
+- PPARA protein physically interacts with GRB2
+- GRB2 associated with Wiskott-Aldrich Syndrome
 
 ###  Structured Bioink Representations
 
