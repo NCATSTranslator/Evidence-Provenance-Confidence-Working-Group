@@ -1,3 +1,8 @@
+## See Goodle Doc here for background, a description of modeled retrieval scenarios, and rationale behind each modeling proposal: https://docs.google.com/document/d/11RKh4d4XPGV0a6V--xvpjBFO7RnnT2BZkNzGbakt0a0/edit#
+
+## ----------
+
+## SCENARIO 1 EXAMPLES
 
 ## Abrar Original Proposal
 {
@@ -88,7 +93,9 @@
    
  #----------------------------------------------------#
    
-  ## Biolink-Based Renaming/Reframing of Abrar's Original Proposal (same structure, more Biolink-based semantics)
+  ## Proposal 2: Biolink-Based Renaming/Reframing of Abrar's Original Proposal (same structure as Abrar's, more Biolink-based semantics)
+  ## Ilustrates Proposal 2 in the Gdoc here: https://docs.google.com/document/d/11RKh4d4XPGV0a6V--xvpjBFO7RnnT2BZkNzGbakt0a0/edit#
+
 {
   "edges": {
     "id": "e719492"
@@ -183,7 +190,8 @@
  
  #----------------------------------------------------#
    
-  ## Biolink-Based Restructuring of Abrar's Original Proposal (moves from a 2-level to a 1-level representation, using more Biolink-based semantics)
+  ## Proposal 3: Biolink-Based Restructuring of Abrar's Original Proposal (moves from a 2-level to a 1-level representation, using more Biolink-based semantics)
+  ## Ilustrates Proposal 3 in the Gdoc here: https://docs.google.com/document/d/11RKh4d4XPGV0a6V--xvpjBFO7RnnT2BZkNzGbakt0a0/edit#
   ## Note that I think we decided the 'preceded_by' fields are not needed (which perhaps means that the hash IDs for SourceMetadata and RetrievalMetadata  are also not needed)
 {
   "edges": {
@@ -274,14 +282,78 @@
    ]
  }
 
- 
  # -------------------------------------------------------------
+	 
+  ## Proposal 4: Bare Bones Model proposed on 5-10-22 Call . . . and even simpler one level representation
+  ## Ilustrates Proposal 4 in the Gdoc here: https://docs.google.com/document/d/11RKh4d4XPGV0a6V--xvpjBFO7RnnT2BZkNzGbakt0a0/edit#
+
+{
+  "edges": {
+    "id": "e719491",
+    "subject": "RXCUI:1544384",
+    "predicate": "biolink:correlated_with",
+    "object": "MONDO:0008383",
+    "sources": [
+     {
+        "id": "re25ac984b7kb1",
+        "resource": "infores:KS_1",
+        "resource_role": "primary"
+    },
+	 
+    {
+        "id": "re25ac984b7kp1ks1",
+        "resource": "infores:KP_1",
+        "resource_role": "primary",
+        "upstream_resource": ["infores:KS_1"]
+    },
+  
+    {
+        "id": "re25ac984b7kp2ks1",
+        "resource": "infores:KP_2",
+        "resource_role": "primary",
+        "upstream_resource": ["infores:KS_1"]
+    },	
+	       
+    {
+        "id": "re25ac984b7kp3ks1",
+        "resource": "infores:KP_3",
+        "resource_role": "primary",
+        "upstream_resource": ["infores:KS_1"]
+    },	
+	  
+    {
+        "id": "re25ac984b7ara1kp1kp2",
+        "resource": "infores:ARA_1",
+        "resource_role": "primary",
+        "upstream_resource": ["infores:KP_1", "infores:KP_2"]
+    },	
+
+    {
+        "id": "re25ac984b7ara2kp1kp3",
+        "resource": "infores:ARA_2",
+        "resource_role": "primary",
+        "upstream_resource": ["infores:KP_1", "infores:KP_3"]
+    },	
+	
+    {
+        "id": "re25ac984b7wrara1ara2",
+        "resource": "infores:WR",
+        "resource_role": "primary",
+        "upstream_resource": ["infores:ARA_1", "infores:ARA_2"]
+    }	
+  ]
+ }
+}
+
+# -------------------------------------------------------------
  
+## SCENARIO 2 EXAMPLES (Scenario 2 overview in Gdoc here: https://docs.google.com/document/d/11RKh4d4XPGV0a6V--xvpjBFO7RnnT2BZkNzGbakt0a0/edit#)
+
    ## One-level representation of an expanded scenario that include a second external source / original source that KP1 pulls from.
    ## e.g. MolePro pulls the edge/association ChemX-binds-GeneY from ChemBL and StringDB. Same SPOQ semantics, but different original/primary source.  
-   ## These two Edges never get merged into a single Association/Edge object (although the UI might ultimately display them as one).
+   ## Because our merge criteria include identity of the primary/original source, these two Edges never get merged into a single Association/Edge object (although the UI might ultimately display them as one).
    ## Only the second Edge is shown below, which would complement the Edge already shown above.
-   ## This second edge is passed through KP1, ARA1 and ARA2, on its way to the WR. 
+   ## This second edge is retrieved from KS2 by KP1, then goes through ARA1 and ARA2, on its way to the WR. 
    
 {
   "edges": { 
@@ -292,7 +364,7 @@
     "retrievals": [
 	
 	{
-      "id": "re52ba891b4kb2kp1",
+          "id": "re52ba891b4kb2kp1",
 	  "source": "infores:KS2",
 	  "source_role": "original",
 	  "target": "infores:KP_1",
@@ -301,7 +373,7 @@
     },
 
 	{
-      "id": "re43ab256b7kp1ara1",    # note that the content of this object is identical to that of one in the other edge - which would give the same hashed id,  unless we include the edge id in computing the hash (which I think we should for this reason . . . we want these hash ids to be different)
+          "id": "re43ab256b7kp1ara1",    # note that the content of this object is identical to that of one in the other edge - which would give the same hashed id,  unless we include the edge id in computing the hash (which I think we should for this reason . . . we want these hash ids to be different)
 	  "source": "infores:KP1",
 	  "source_role": "aggregator",
 	  "target": "infores:ARA_1",
@@ -311,7 +383,7 @@
     },
 
 	{
-      "id": "re68aa815c7kp1ara2",
+          "id": "re68aa815c7kp1ara2",
 	  "source": "infores:KP1",
 	  "source_role": "aggregator",
 	  "target": "infores:ARA_2",
@@ -320,7 +392,7 @@
 	  "preceded_by": ["re52ba891b4kb2kp1"]
     },
 	{
-      "id": "re72ba249b3ara1wr",
+          "id": "re72ba249b3ara1wr",
 	  "source": "infores:ARA1",
 	  "source_role": "aggregator",
 	  "target": "infores:WR",
@@ -329,7 +401,7 @@
 	  "preceded_by": ["re43ab256b7kp1ara1"]
     },
 	{
-      "id": "re72bc725c7ara2wr",
+          "id": "re72bc725c7ara2wr",
 	  "source": "infores:ARA2",
 	  "source_role": "aggregator",
 	  "target": "infores:WR",
