@@ -147,9 +147,12 @@ object_direction: increased
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "increased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             }
           ]
         }
@@ -158,8 +161,6 @@ object_direction: increased
   }
 }
  ````
-**Questions**: 
-- Do we need to constrain on the qualified_predicate?
 
 --------
 
@@ -197,9 +198,12 @@ object_direction: increased
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "increased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             },
             {
               "qualifier_set": [
@@ -210,9 +214,12 @@ object_direction: increased
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "increased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             },
             {
               "qualifier_set": [
@@ -223,9 +230,12 @@ object_direction: increased
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "decreased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             }
           ]
         }
@@ -275,9 +285,12 @@ Based on Vlado's example query, but modified 'synthesis' -> 'phosphorylation' (a
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "increased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             },
             {
               "qualifier_set": [
@@ -288,9 +301,12 @@ Based on Vlado's example query, but modified 'synthesis' -> 'phosphorylation' (a
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "increased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             },
             {
               "qualifier_set": [
@@ -302,9 +318,12 @@ Based on Vlado's example query, but modified 'synthesis' -> 'phosphorylation' (a
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "increased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             },
             {
               "qualifier_set": [
@@ -316,9 +335,12 @@ Based on Vlado's example query, but modified 'synthesis' -> 'phosphorylation' (a
                 {
                   "qualifier_type_id": "biolink:object_direction",
                   "value": "decreased"
+                },
+                {
+                  "qualifier_type_id": "biolink:qualified_predicate",
+                  "value": "biolink:causes"
                 }
-              ],
-              "constrained_predicate": "biolink:affects"
+              ]
             }
           ]
         }
