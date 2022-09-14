@@ -2,7 +2,7 @@
 
 ## ----------
 
-## CANDIDATE 1 EXAMPLES: Retrieval Event Model (Approach 3)
+## CANDIDATE 1 EXAMPLES: Retrieval Event Model (Proposal 3)
 
   ## Scenario 1: Knowledge Retrieval - four edges from one primary source merged to one edge
   
@@ -214,7 +214,7 @@
    
   ##--------------------------------------------------------------------------------------##
   
-## CANDIDATE 2 EXAMPLES: Bare Bones Model (Approach 4) 
+## CANDIDATE 2 EXAMPLES: Bare Bones Model (Proposal 4) 
   
   ## Scenario 1: Knowledge Retrieval - four edges from one primary source merged to one edge
   
