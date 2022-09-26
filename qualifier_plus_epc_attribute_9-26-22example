@@ -1,0 +1,63 @@
+## Qualifier-based TRAPI representation of an Association expressing the Statement "Bupivacaine causes increased activity of LEF1 gene via positive allosteric modulation",
+## along with various pieces of EPC metadata in Attribute objects. (Example is a hypothetical one, created to illustrate features of the data model) 
+
+  - id: tmkp.Association001
+    category: biolink:ChemicalToGeneAssociation
+    subject: CHEBI:3215 (bupivacaine)  
+    predicate: biolink:affects
+    object: NCBIGene:51176
+
+    qualifiers:
+      - qualifier_type_id: biolink:qualified_predicate
+        qualifier_value: causes
+        
+      - qualifier_type_id: biolink:object_aspect_qualifier
+        qualifier_value: activity
+        
+      - qualifier_type_id: biolink:object_direction_qualifier
+        qualifier_value: increased
+        
+      - qualifier_type_id: biolink:mechanism_qualifier
+        qualifier_value: positive allosteric modulation
+        
+    attributes: 
+
+      - attribute_type_id: biolink:primary_knowledge_source
+        value: infores:chembl
+        value_type_id: biolink:InformationResource       
+        attribute_source: infores:molepro  
+        
+      - attribute_type_id: biolink:aggregator_knowledge_source
+        value: infores:molepro
+        value_type_id: biolink:InformationResource       
+        attribute_source: infores:molepro  
+  
+      - attribute_type_id: biolink:supporting_document
+        value: PMID:2012345
+        value_type_id: biolink:Publication
+        attribute_source: ChEMBL   
+        
+      - attribute_type_id: biolink:knowledge_authored_by
+        value: ORCID:0000-0001-8732-0928
+        value_type_id: biolink:Agent       
+        attribute_source: ChEMBL  
+        description: "Eric Deutsch"
+
+      - attribute_type_id: biolink:has_evidence_of_type
+        value: ECO:00000006  # experimental evidence
+        value_type_id: biolink:OntologyClass     
+        attribute_source: ChEMBL   
+        
+      - attribute_type_id: biolink:p-value     
+        value: 0.0000316
+        attribute_source: ChEMBL
+        attributes:
+          - attribute_type_id: biolink:date_authored (nested)
+            value: 2018-05-21
+            value_type_id: biolink:date 
+            attribute_source: ChEMBL         
+          - attribute_type_id: bioink:authored_by (nested)
+            value: ORCID:0000-0000-1532-2483
+            value_type_id: biolink:Agent       
+            attribute_source: ChEMBL  
+            description: "Deepak Unni"
