@@ -41,6 +41,7 @@
             type: biolink:Agent 
 
 ## TRAPI Attribute-based representation (same semantics, implemented using Attribute objects)
+## UPDATE: on 9-26-22 I updated the exmaple below to reflect current TRAPI/Biolink EPC conventions.
 
   - id: tmkp.Association001
     category: biolink:ChemicalToGeneAssociation
@@ -48,33 +49,43 @@
     predicate: biolink:interacts_with
     object: NCBIGene:51176
     attributes: 
-      - attribute_type_id: SEPIO:0000130      # authored_by
+
+      - attribute_type_id: biolink:aggregator_knowledge_source
+        value: infores:molepro
+        value_type_id: biolink:InformationResource       
+        attribute_source: infores:molepro  
+
+      - attribute_type_id: biolink:primary_knowledge_source
+        value: infores:chembl
+        value_type_id: biolink:InformationResource       
+        attribute_source: infores:molepro  
+        
+      - attribute_type_id: biolink:authored_by
         value: ORCID:0000-0001-8732-0928
         value_type_id: biolink:Agent       
-        value_source: ChEMBL  
+        attribute_source: ChEMBL  
         description: "Eric Deutsch"
 
-      - attribute_type_id: SEPIO:0000438      # has_evidence_from_source
+      - attribute_type_id: biolink:supporting_document
         value: PMID:2012345
         value_type_id: biolink:Publication
-        value_source: ChEMBL    
+        attribute_source: ChEMBL    
 
-      - attribute_type_id: SEPIO:0000398      # has_evidence_of_type
-        value: ECO:00000006                   # experimental evidence
+      - attribute_type_id: biolink:has_evidence_of_type
+        value: ECO:00000006  # experimental evidence
         value_type_id: biolink:OntologyClass     
-        value_source: ChEMBL  
+        attribute_source: ChEMBL  
         
-      - attribute_type_id: SEPIO:0000440      # has_supporting_evidence
+      - attribute_type_id: biolink:p-value     
         value: 0.0000316
-        value_type_id: EDAM:data_1169         # p-value
-        value_source: ChEMBL
+        attribute_source: ChEMBL
         attributes:
-          - attribute_type_id: SEPIO:0000135  # date_authored (nested)
+          - attribute_type_id: biolink:date_authored (nested)
             value: 2018-05-21
             value_type_id: biolink:date 
-            value_source: ChEMBL         
-          - attribute_type_id: SEPIO:0000130  # authored_by (nested)
+            attribute_source: ChEMBL         
+          - attribute_type_id: bioink:authored_by (nested)
             value: ORCID:0000-0000-1532-2483
             value_type_id: biolink:Agent       
-            value_source: ChEMBL  
+            attribute_source: ChEMBL  
             description: "Deepak Unni"
