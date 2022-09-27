@@ -2,7 +2,7 @@
 ## along with various pieces of EPC metadata in Attribute objects. (Example is a hypothetical one, created to illustrate features of the data model) 
 
   - id: tmkp.Association001
-    category: biolink:ChemicalToGeneAssociation
+    category: biolink:ChemicalAffectsGeneAssociation
     subject: CHEBI:3215 (bupivacaine)  
     predicate: biolink:affects
     object: NCBIGene:51176
@@ -36,12 +36,6 @@
         value: PMID:2012345
         value_type_id: biolink:Publication
         attribute_source: ChEMBL   
-        
-      - attribute_type_id: biolink:knowledge_authored_by
-        value: ORCID:0000-0001-8732-0928
-        value_type_id: biolink:Agent       
-        attribute_source: ChEMBL  
-        description: "Eric Deutsch"
 
       - attribute_type_id: biolink:has_evidence_of_type
         value: ECO:00000006  # experimental evidence
@@ -52,12 +46,8 @@
         value: 0.0000316
         attribute_source: ChEMBL
         attributes:
-          - attribute_type_id: biolink:date_authored (nested)
+          - attribute_type_id: biolink:date_acreated 
             value: 2018-05-21
             value_type_id: biolink:date 
             attribute_source: ChEMBL         
-          - attribute_type_id: bioink:authored_by (nested)
-            value: ORCID:0000-0000-1532-2483
-            value_type_id: biolink:Agent       
-            attribute_source: ChEMBL  
-            description: "Deepak Unni"
+
