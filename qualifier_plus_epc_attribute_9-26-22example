@@ -24,7 +24,8 @@
 
       - attribute_type_id: biolink:primary_knowledge_source
         value: infores:chembl
-        value_type_id: biolink:InformationResource       
+        value_type_id: biolink:InformationResource    
+        value_url: https://www.ebi.ac.uk/chembl
         attribute_source: infores:molepro  
         
       - attribute_type_id: biolink:aggregator_knowledge_source
@@ -46,7 +47,7 @@
         value: 0.0000316
         attribute_source: ChEMBL
         attributes:
-          - attribute_type_id: biolink:date_acreated 
+          - attribute_type_id: biolink:date_created 
             value: 2018-05-21
             value_type_id: biolink:date 
             attribute_source: ChEMBL         
