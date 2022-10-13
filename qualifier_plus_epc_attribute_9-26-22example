@@ -35,7 +35,7 @@
         value_type_id: biolink:InformationResource       
         attribute_source: infores:molecular-data-provider 
   
-      - attribute_type_id: biolink:supporting_document
+      - attribute_type_id: biolink:publications
         value: PMID:2012345
         value_type_id: biolink:Publication
         attribute_source: infores:chembl   
