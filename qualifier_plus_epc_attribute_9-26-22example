@@ -1,15 +1,16 @@
-## Qualifier-based TRAPI representation of an Association expressing the Statement "Bupivacaine causes increased activity of LEF1 gene via positive allosteric modulation",
-## along with various pieces of EPC metadata in Attribute objects. (Example is a hypothetical one, created to illustrate features of the data model) 
+## Qualifier-based TRAPI representation of an Association expressing the Statement:
+##     "Bupivacaine causes increased activity of LEF1 gene via positive allosteric modulation"
+## Includes various pieces of EPC metadata in Attribute objects. (Example is a hypothetical one, created to illustrate features of the data model) 
 
   - id: tmkp.Association001
     category: biolink:ChemicalAffectsGeneAssociation
-    subject: CHEBI:3215 (bupivacaine)  
+    subject: CHEBI:3215  
     predicate: biolink:affects
     object: NCBIGene:51176
 
     qualifiers:
       - qualifier_type_id: biolink:qualified_predicate
-        qualifier_value: causes
+        qualifier_value: biolink:causes
         
       - qualifier_type_id: biolink:object_aspect_qualifier
         qualifier_value: activity
@@ -26,22 +27,23 @@
         value: infores:chembl
         value_type_id: biolink:InformationResource    
         value_url: https://www.ebi.ac.uk/chembl
-        attribute_source: infores:molepro  
+        description: "ChEMBL is a manually curated database of bioactive molecules..."
+        attribute_source: infores:molecular-data-provider
         
       - attribute_type_id: biolink:aggregator_knowledge_source
-        value: infores:molepro
+        value: infores:molecular-data-provider 
         value_type_id: biolink:InformationResource       
-        attribute_source: infores:molepro  
+        attribute_source: infores:molecular-data-provider 
   
       - attribute_type_id: biolink:supporting_document
         value: PMID:2012345
         value_type_id: biolink:Publication
-        attribute_source: ChEMBL   
+        attribute_source: infores:chembl   
 
       - attribute_type_id: biolink:has_evidence_of_type
         value: ECO:00000006  # experimental evidence
         value_type_id: biolink:OntologyClass     
-        attribute_source: ChEMBL   
+        attribute_source: infores:chembl   
         
       - attribute_type_id: biolink:p-value     
         value: 0.0000316
