@@ -19,57 +19,57 @@ Chemical - negatively regulates (dec activity of) -  Gene/Protein - physically i
 
 **Record A:** Fenofibrate binds to PPARA protein (CTD)
 ````
-subject: Fenofibrate
-predicate: physically interacts with
-object: PPARA
+subject: CHEBI:5001  # Fenofibrate
+predicate: biolink:physically_interacts_with
+object: NCBIGene:5465  # PPARA
 ````
 
 **Record B:** Fenofibrate results in increased activity of PPARA protein (CTD)
 ````
-subject: Fenofibrate
-predicate: affects
-qualified_predicate: causes
-object: PPARA 
+subject: CHEBI:5001  # Fenofibrate
+predicate: biolink:affects
+qualified_predicate: biolink:causes
+object: NCBIGene:5465  # PPARA
 object_aspect: activity
 object_direction: increased
 ````
 
 **Record C:** Fenofibrate results in increased expression of PPARA (CTD)
 ````
-subject: Fenofibrate
-predicate: affects
-qualified_predicate: causes
-object: PPARA 
+subject: CHEBI:5001  # Fenofibrate
+predicate: biolink:affects
+qualified_predicate: biolink:causes
+object: NCBIGene:5465  # PPARA
 object_aspect: expression
 object_direction: increased
 ````
 
 **Record D:** Bezofuran increases the activity of PPARA (CTD)
 ````
-subject: Bezofuran 
-predicate: affects
-qualified_predicate: causes
-object: PPARA 
+subject: CHEBI:35260 # Bezofuran 
+predicate: biolink:affects
+qualified_predicate: biolink:causes
+object: NCBIGene:5465  # PPARA
 object_aspect: activity
 object_direction: increased
 ````
   
 **Record E:** Bezofuran results in decreased degradation of PPARA (CTD)
 ````
-subject: Bezofuran
-predicate: affects
-qualified_predicate: causes
-object: PPARA
+subject: CHEBI:35260 # Bezofuran
+predicate: biolink:affects
+qualified_predicate: biolink:causes
+object: NCBIGene:5465  # PPARA
 object_aspect: degradation
 object_direction: decreased
 ````
 
 **Record F:** Okadaic Acid results in increased phosphorylation of PPARA (CTD)
 ````
-subject: Okadaic Acid
-predicate: affects
-qualified_predicate: causes
-object: PPARA
+subject: CHEBI:44658 # Okadaic Acid
+predicate: biolink:affects
+qualified_predicate: biolink:causes
+object: NCBIGene:5465  # PPARA
 object_aspect: phosphorylation
 object_direction: increased
 ````
@@ -92,7 +92,7 @@ object_direction: increased
           "category": "biolink:ChemicalSubstance"
         },
         "n1": {
-          "id": "HGNC:9232"
+          "id": "NCBIGene:5465" 
         }
       },
       "edges": {
@@ -100,7 +100,7 @@ object_direction: increased
           "subject": "n0",
           "object": "n1",
           "predicate": [
-            "affects"
+            "biolink:affects"
           ]
         }
       }
@@ -124,10 +124,10 @@ object_direction: increased
     "query_graph": {
       "nodes": {
         "n0": {
-          "category": "biolink:ChemicalSubstance"
+          "category": "biolink:ChemicalEntity"
         },
         "n1": {
-          "id": "HGNC:9232"
+          "id": "NCBIGene:5465"  
         }
       },
       "edges": {
@@ -135,7 +135,7 @@ object_direction: increased
           "subject": "n0",
           "object": "n1",
           "predicate": [
-            "affects"
+            "biolink:affects"
           ],
           "qualifier_constraints": [
             {
@@ -175,10 +175,10 @@ object_direction: increased
     "query_graph": {
       "nodes": {
         "n0": {
-          "category": "biolink:ChemicalSubstance"
+          "category": "biolink:ChemicalEntity"
         },
         "n1": {
-          "id": "HGNC:9232"
+          "id": "NCBIGene:5465"
         }
       },
       "edges": {
@@ -186,7 +186,7 @@ object_direction: increased
           "subject": "n0",
           "object": "n1",
           "predicate": [
-            "affects"
+            "biolink:affects"
           ],
           "qualifier_constraints": [
             {
@@ -262,10 +262,10 @@ Based on Vlado's example query, but modified 'synthesis' -> 'phosphorylation' (a
     "query_graph": {
       "nodes": {
         "n0": {
-          "category": "biolink:ChemicalSubstance"
+          "category": "biolink:ChemicalEntity"
         },
         "n1": {
-          "id": "HGNC:9232"
+          "id": "NCBIGene:5465" 
         }
       },
       "edges": {
@@ -273,7 +273,7 @@ Based on Vlado's example query, but modified 'synthesis' -> 'phosphorylation' (a
           "subject": "n0",
           "object": "n1",
           "predicate": [
-            "affects"
+            "biolink:affects"
           ],
           "qualifier_constraints": [
             {
