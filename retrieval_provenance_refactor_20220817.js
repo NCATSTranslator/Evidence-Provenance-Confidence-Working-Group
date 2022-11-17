@@ -2,7 +2,7 @@
 
 ## ----------
 
-## CANDIDATE A EXAMPLES: Use Existing Attribute objects (Proposal 1)
+## CANDIDATE A EXAMPLES: Use Existing Attribute objects (Proposal 1 from Gdoc)
 
 ##  Just use existing attribute model with nesting to capture 'previous source' for each InformtionResource  
   
@@ -90,7 +90,7 @@
         "attribute_source": ["infores:ARA_2"]
         "attributes": [
            {
-             "attribute_type_id": "previous_knowledge_source",
+             "attribute_type_id": "previous_source",
              "value": "infores:KP_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:ARA_2"]
@@ -227,7 +227,7 @@
 ## --------------------------------------------------------##
 
 
-## CANDIDATE B EXAMPLES: Bare Bones Model (Proposal 4) 
+## CANDIDATE B EXAMPLES: Bare Bones Model (Proposal 4 from Gdoc) 
   
   ## Scenario 1: Knowledge Retrieval - four edges from one primary source merged to one edge
   
@@ -249,95 +249,48 @@
       "type": biolink:Source
       "resource": "infores:KP_1",
       "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KS_1"]      
+      "previous_resource": ["infores:KS_1"]      
       },
       {                                        # R2
       "id": "re75bb123a8k546836t",
       "type": biolink:Source,
       "resource": "infores:KP_2",
       "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KS_1"]
+      "previous_resource": ["infores:KS_1"]
       },
       {                                        # R3
       "id": "re41ac943b2670245",
       "type": biolink:Source,
       "resource": "infores:KP_3",
       "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KS_1"]
+      "previous_resource": ["infores:KS_1"]
       },
       {                                        # R4, R5
       "id": "re82ab873a93687325",
       "type": biolink:Source,
       "resource": "infores:ARA1",
       "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KP_1", "infores:KP_2"]
+      "previous_resource": ["infores:KP_1", "infores:KP_2"]
       },
       {                                        # R6, R7
       "id": "re82ab873a9635794tt",
       "type": biolink:Source,
       "resource": "infores:ARA2",
       "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KP_1", "infores:KP_3"]
+      "previous_resource": ["infores:KP_1", "infores:KP_3"]
       },
       {                                        # R8, R9
       "id": "re82ab873a9e57jnf",
       "type": biolink:Source,
       "resource": "infores:WR",
       "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:ARA_1", "infores:ARA_2"]
+      "previous_resource": ["infores:ARA_1", "infores:ARA_2"]
       },
    ]
  }
   
   
-  ## Scenario 2: Knowledge Retrieval - six edges from two primary sources merged to two edges
-    ## This example will include all data from Scenario 1 (which represents the first of two merged edges relevant for Scenario 2). Plus the data below representing the second merged edge. 
-  
-  {
-  "edges": { 
-    "id": "e21aa4542"                         # This is the second Edge that gets created for the knolwedge as originating in KS2, even though it represents the same SPO statement as the Edge originating in KS1 as represented above.
-    "subject": "RXCUI:1544384",
-    "predicate": "biolink:correlated_with",
-    "object": "MONDO:0008383",
-    "sources": [
-      {                                        
-      "id": "re25ac984efb743",                 # Ids for these object only necessary if we need to refer to them. 
-      "type": biolink:Source,
-      "resource": "infores:KS_2",
-      "resource_role": "primary knowledge source",
-      },
-      {                                        # R10
-      "id": "re83bb19esgno7",
-      "type": biolink:Source,
-      "resource": "infores:KP_1",
-      "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KS_2"]      
-      },
-      {                                        # R11
-      "id": "re83bb19fasdh83",
-      "type": biolink:Source,
-      "resource": "infores:ARA_1",
-      "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KP_1"]      
-      },
-      {                                        # R12
-      "id": "re83bb19843ga8",
-      "type": biolink:Source,
-      "resource": "infores:ARA_2",
-      "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:KP_1"]      
-      },
-      {                                        # R13, R14
-      "id": "re83bb198ccau864",
-      "type": biolink:Source,
-      "resource": "infores:WR",
-      "resource_role": "aggregator knowledge source",
-      "upstream_resource": ["infores:ARA_1", "infores:ARA_2"]      
-      },
-   ]
- }
-    
-  
+
   ## Scenario 3: Knowledge Creation from Data - two edges from one primary source merged to one edge
 
     {
@@ -364,37 +317,85 @@
       "type": biolink:Source,
       "resource": "infores:KP_1",
       "resource_role": "primary data source",
-      "upstream_resource": ["infores:DB_1", "infores:DB_2"]     # Note here that in this case, a 'primary resource' can have upstream resources that provide data used to compute the primary knowledge.  Consider if we want a separate field for this (e.g. distinguish 'upstream_knowledge_resource' from 'upstream_data_resource')
+      "previous_resource": ["infores:DB_1", "infores:DB_2"]     # Note here that in this case, a 'primary resource' can have upstream resources that provide data used to compute the primary knowledge.  Consider if we want a separate field for this (e.g. distinguish 'upstream_knowledge_resource' from 'upstream_data_resource')
       },
       {                                        
       "id": "re25ac984saj7",           
       "type": biolink:Source,
       "resource": "infores:ARA_1",
       "resource_role": "aggregator data source",
-      "upstream_resource": ["infores:KP_1"] 
+      "previous_resource": ["infores:KP_1"] 
       },
       {                                        
       "id": "re25ac984cjo3",           
       "type": biolink:Source,
       "resource": "infores:ARA_2",
       "resource_role": "aggregator data source",
-      "upstream_resource": ["infores:KP_1"] 
+      "previous_resource": ["infores:KP_1"] 
       },
       {                                        
       "id": "re25ac984hcdaq5",           
       "type": biolink:Source,
       "resource": "infores:WR",
       "resource_role": "aggregator data source",
-      "upstream_resource": ["infores:ARA_1", "infores:ARA_1"] 
+      "previous_resource": ["infores:ARA_1", "infores:ARA_1"] 
       },
     ]
   }
 
     
-    
+
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+### OBSOLETE / ATTIC ##
+       
 ##--------------------------------------------------------------------------------------##
 
-## CANDIDATE C EXAMPLES: Retrieval Event Model (Proposal 3)
+## CANDIDATE C EXAMPLES: Retrieval Event Model (Proposal 3 from Gdoc)
 
   ## Scenario 1: Knowledge Retrieval - four edges from one primary source merged to one edge
   
@@ -605,4 +606,56 @@
   }
    
   ##--------------------------------------------------------------------------------------##
+  
+  
+  
+  Candidate B / Proposal 4 Scenario 2 example:
+       
+    ## Scenario 2: Knowledge Retrieval - six edges from two primary sources merged to two edges
+    ## This example will include all data from Scenario 1 (which represents the first of two merged edges relevant for Scenario 2). Plus the data below representing the second merged edge. 
+  
+  {
+  "edges": { 
+    "id": "e21aa4542"                         # This is the second Edge that gets created for the knolwedge as originating in KS2, even though it represents the same SPO statement as the Edge originating in KS1 as represented above.
+    "subject": "RXCUI:1544384",
+    "predicate": "biolink:correlated_with",
+    "object": "MONDO:0008383",
+    "sources": [
+      {                                        
+      "id": "re25ac984efb743",                 # Ids for these object only necessary if we need to refer to them. 
+      "type": biolink:Source,
+      "resource": "infores:KS_2",
+      "resource_role": "primary knowledge source",
+      },
+      {                                        # R10
+      "id": "re83bb19esgno7",
+      "type": biolink:Source,
+      "resource": "infores:KP_1",
+      "resource_role": "aggregator knowledge source",
+      "upstream_resource": ["infores:KS_2"]      
+      },
+      {                                        # R11
+      "id": "re83bb19fasdh83",
+      "type": biolink:Source,
+      "resource": "infores:ARA_1",
+      "resource_role": "aggregator knowledge source",
+      "upstream_resource": ["infores:KP_1"]      
+      },
+      {                                        # R12
+      "id": "re83bb19843ga8",
+      "type": biolink:Source,
+      "resource": "infores:ARA_2",
+      "resource_role": "aggregator knowledge source",
+      "upstream_resource": ["infores:KP_1"]      
+      },
+      {                                        # R13, R14
+      "id": "re83bb198ccau864",
+      "type": biolink:Source,
+      "resource": "infores:WR",
+      "resource_role": "aggregator knowledge source",
+      "upstream_resource": ["infores:ARA_1", "infores:ARA_2"]      
+      },
+   ]
+ }
+    
   
