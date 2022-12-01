@@ -54,17 +54,17 @@
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:arax"
@@ -82,22 +82,22 @@
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "prediction",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:support_graphs",
 			  "value": ["ng_p01", "ng_p02", "ng_p03", "ng_p04"],
               "attribute_source": "infores:aragorn"
@@ -111,22 +111,22 @@
           "predicate": "biolink:ameliorates",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "text mining",
               "attribute_source": "infores:semmeddb"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "assertion",
               "attribute_source": "infores:semmeddb"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:semmeddb",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -138,22 +138,22 @@
           "predicate": "biolink:similar_to",
           "object": "neratinib",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational_model",
               "attribute_source": "infores:hetio"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:hetio"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:hetio",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -165,22 +165,22 @@
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -192,22 +192,22 @@
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:chembl"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:chembl"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:chembl",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -219,22 +219,22 @@
           "predicate": "biolink:decreases_expression_of",
           "object": "ERBB2",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:ctd"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:ctd"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:ctd",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -246,22 +246,22 @@
           "predicate": "biolink:gene_associated_with_condition",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:genetics_kp"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:genetics_kp"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:genetics_kp",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -273,22 +273,22 @@
           "predicate": "biolink:affects",
           "object": "ERVK2",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -300,22 +300,22 @@
           "predicate": "biolink:gene_associated_with_condition",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:genetics_kp"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:genetics_kp"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:genetics_kp",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -329,22 +329,22 @@
           "predicate": "biolink:occurs_together_in_literature_with",
           "object": "asthma",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn-ranker-ara",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -356,22 +356,22 @@
           "predicate": "biolink:occurs_together_in_literature_with",
           "object": "ERVK2",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn-ranker-ara",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -383,22 +383,22 @@
           "predicate": "biolink:occurs_together_in_literature_with",
           "object": "Tyr Kinase",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn-ranker-ara",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -412,22 +412,22 @@
           "predicate": "biolink:inhibits",
           "object": "Tyr Kinase",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -439,22 +439,22 @@
           "predicate": "biolink:inhibits",
           "object": "Tyr Kinase",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -466,22 +466,22 @@
           "predicate": "biolink:inhibits",
           "object": "Tyr Kinase",
           "attributes": [
-			{
+	    {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-			{
+	    {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-			{
+	    {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
@@ -497,7 +497,7 @@
     "support_graphs": [    # Named graphs that group edges from the KGraph into collections we want to reference as a unit from an Answer Edge (as evidence supporting that Edge), or from a Result (as support for a score)
 	  {
 	     "id": "ng_p01",
-		 "edges": [
+	     "edges": [
            {
              "id": "E_02"
            }
@@ -505,7 +505,7 @@
 	  },
 	  {
 	     "id": "ng_p02",
-		 "edges": [
+	     "edges": [
            {
              "id": "E_03"
            },
@@ -519,7 +519,7 @@
 	  },
 	  {
 	     "id": "ng_p03",
-		 "edges": [
+	     "edges": [
            {
              "id": "E_06"
            },
@@ -530,7 +530,7 @@
 	  },
 	  {
 	     "id": "ng_p04",
-		 "edges": [
+	     "edges": [
            {
              "id": "E_08"
            },
@@ -541,7 +541,7 @@
 	  },
 	  {
 	     "id": "ng_g01",
-		 "edges": [
+	     "edges": [
            {
              "id": "E_10"
            },
@@ -555,7 +555,7 @@
 	  },
 	  {
 	     "id": "ng_g02",
-		 "edges": [
+	     "edges": [
            {
              "id": "E_13"
            },
