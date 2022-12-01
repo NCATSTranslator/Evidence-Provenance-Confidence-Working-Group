@@ -238,49 +238,41 @@
     "predicate": "biolink:correlated_with",
     "object": "MONDO:0008383",
     "sources": [
-      {                                        
-      "id": "re25ac984b7235",                  # Ids for these object only necessary if we need to refer to them.
       "type": biolink:Source,
       "resource": "infores:KS_1",
       "resource_role": "primary knowledge source",
       },
       {                                        # R1
-      "id": "re83bb198c873y",
       "type": biolink:Source
       "resource": "infores:KP_1",
       "resource_role": "aggregator knowledge source",
       "previous_resource": ["infores:KS_1"]      
       },
       {                                        # R2
-      "id": "re75bb123a8k546836t",
       "type": biolink:Source,
       "resource": "infores:KP_2",
       "resource_role": "aggregator knowledge source",
       "previous_resource": ["infores:KS_1"]
       },
       {                                        # R3
-      "id": "re41ac943b2670245",
       "type": biolink:Source,
       "resource": "infores:KP_3",
       "resource_role": "aggregator knowledge source",
       "previous_resource": ["infores:KS_1"]
       },
       {                                        # R4, R5
-      "id": "re82ab873a93687325",
       "type": biolink:Source,
       "resource": "infores:ARA1",
       "resource_role": "aggregator knowledge source",
       "previous_resource": ["infores:KP_1", "infores:KP_2"]
       },
       {                                        # R6, R7
-      "id": "re82ab873a9635794tt",
       "type": biolink:Source,
       "resource": "infores:ARA2",
       "resource_role": "aggregator knowledge source",
       "previous_resource": ["infores:KP_1", "infores:KP_3"]
       },
       {                                        # R8, R9
-      "id": "re82ab873a9e57jnf",
       "type": biolink:Source,
       "resource": "infores:WR",
       "resource_role": "aggregator knowledge source",
@@ -288,8 +280,6 @@
       },
    ]
  }
-  
-  
 
   ## Scenario 3: Knowledge Creation from Data - two edges from one primary source merged to one edge
 
@@ -301,26 +291,22 @@
     "object": "MONDO:0008383",
     "sources": [
       {                                        
-      "id": "re25ac984efb743",                 # Ids for these object only necessary if we need to refer to them. 
       "type": biolink:Source,
       "resource": "infores:DB_1",
       "resource_role": "supporting data source",
       },
-      {                                        
-      "id": "re25ac984er24",           
+      {                                               
       "type": biolink:Source,
       "resource": "infores:DB_2",
       "resource_role": "supporting data source",
       },
-      {                                        
-      "id": "re25ac984egw4",           
+      {                                                
       "type": biolink:Source,
       "resource": "infores:KP_1",
       "resource_role": "primary data source",
       "previous_resource": ["infores:DB_1", "infores:DB_2"]     # Note here that in this case, a 'primary resource' can have upstream resources that provide data used to compute the primary knowledge.  Consider if we want a separate field for this (e.g. distinguish 'upstream_knowledge_resource' from 'upstream_data_resource')
       },
-      {                                        
-      "id": "re25ac984saj7",           
+      {                                                
       "type": biolink:Source,
       "resource": "infores:ARA_1",
       "resource_role": "aggregator data source",
@@ -333,8 +319,7 @@
       "resource_role": "aggregator data source",
       "previous_resource": ["infores:KP_1"] 
       },
-      {                                        
-      "id": "re25ac984hcdaq5",           
+      {                                                
       "type": biolink:Source,
       "resource": "infores:WR",
       "resource_role": "aggregator data source",
