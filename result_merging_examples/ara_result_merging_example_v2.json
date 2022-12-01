@@ -493,8 +493,7 @@
       "nodes": {              #Don't really need to show these explicitly to illustrate proposal: null
       }
     },
-
-    "support_graphs": {       # Named graphs that group edges from the KGraph into collections we want to reference as a unit from an Answer Edge (as evidence supporting that Edge), or from a Result (as support for a score)
+    "support_graphs": {       # Named graphs that group edges from the KGraph into collections we want to reference from an Answer Edge (as evidence supporting that Edge), or from a Result (as information used to generate a score)
       "ng_p01": {
         "edges": [
           "E_02"
@@ -503,9 +502,9 @@
       },
       "ng_p02": {
         "edges": [
-          "E_02",
           "E_03",
-          "E_04"
+          "E_04",
+          "E_05"
         ],
         "attributes": []
       },
@@ -540,7 +539,6 @@
         "attributes": []
       }
     },
-
     "results": [
       {
         "essence": "BENRALIZUMAB",
