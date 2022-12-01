@@ -573,8 +573,6 @@
       {
         "essence": "BENRALIZUMAB",
         "essence_category": "['biolink:ChemicalEntity']",
-
-        },
         "node_bindings": {
           "n0": [
             {
@@ -587,12 +585,12 @@
             }
           ]
         },
-		"scores": [
+	"scores": [
 		{
           "reasoner_id": "ARAGORN",
           "score": 1.9,
-		  "scoring_method": "ARAGORN Scoring Algorhitm 1",
-		  "support_graphs": ["ng_g01", "ng_g02"]
+	  "scoring_method": "ARAGORN Scoring Algorhitm 1",
+	  "support_graphs": ["ng_g01", "ng_g02"]
           "edge_bindings": {                             
             "e0": [
               {
@@ -603,8 +601,9 @@
               }			
             ]
            }
-          ]   
-        } 
+	 } 
+       ]   
+     }
   "reasoner_id": "ARAGORN",
   "schema_version": "1.3.0",
   "status": "OK",
@@ -612,7 +611,6 @@
   "total_results_count": 1,
   "type": "translator_reasoner_response"
   }
-
 }
 
 
