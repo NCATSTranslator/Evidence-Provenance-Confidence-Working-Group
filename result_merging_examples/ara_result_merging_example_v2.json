@@ -8,20 +8,18 @@
   "datetime": "2022-11-02 23:18:10",
   "description": "Normal completion",
   "id": "https://arax.ncats.io/api/arax/v1.2/response/77143",
- 
-
   "message": {
     "query_graph": {
       "edges": {
         "e0": {
           "knowledge_type": "inferred",
-          "subject": "n0"
+          "subject": "n0",
           "predicates": [
             "biolink:treats"
           ],
           "object": "n1",
           "qualifier_constraints": [],
-		  "attribute_constraints": []
+          "attribute_constraints": []
         }
       },
       "nodes": {
@@ -44,27 +42,26 @@
         }
       }
     },
-	
     "knowledge_graph": {
       "edges": {
-
-        ## Answer Edges (assertions or predictions that topologically match the query)
+      
+       ## Answer Edges (assertions or predictions that topologically match the query)
         "E_00": {
-          "subject": "Benralizumab"
+          "subject": "Benralizumab",
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:arax"
@@ -75,500 +72,501 @@
               "attribute_source": "infores:aragorn"
             }
           ]
-
         },
         "E_01": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "prediction",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:support_graphs",
-			  "value": ["ng_p01", "ng_p02", "ng_p03", "ng_p04"],
+              "value": [
+                "ng_p01",
+                "ng_p02",
+                "ng_p03",
+                "ng_p04"
+              ],
               "attribute_source": "infores:aragorn"
             }
           ]
-        }, 
+        },
 
-        ## Evidence Edges (edges/paths inferred over to make predictions)
+       ## Evidence Edges (edges/paths inferred over to make predictions)
         "E_02": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:ameliorates",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "text mining",
               "attribute_source": "infores:semmeddb"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "assertion",
               "attribute_source": "infores:semmeddb"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:semmeddb",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        },  
+        },
         "E_03": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:similar_to",
           "object": "neratinib",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational_model",
               "attribute_source": "infores:hetio"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:hetio"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:hetio",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        },   
+        },
         "E_04": {
-          "subject": "neratinib"
+          "subject": "neratinib",
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        },  
+        },
         "E_05": {
-          "subject": "neratinib"
+          "subject": "neratinib",
           "predicate": "biolink:treats",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:chembl"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:chembl"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:chembl",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        },  
+        },
         "E_06": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:decreases_expression_of",
           "object": "ERBB2",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:ctd"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:ctd"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:ctd",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        },   
+        },
         "E_07": {
-          "subject": "ERBB2"
+          "subject": "ERBB2",
           "predicate": "biolink:gene_associated_with_condition",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:genetics_kp"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:genetics_kp"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:genetics_kp",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        },   		
+        },
         "E_08": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:affects",
           "object": "ERVK2",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        },  		
+        },
         "E_09": {
-          "subject": "ERVK2"
+          "subject": "ERVK2",
           "predicate": "biolink:gene_associated_with_condition",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:genetics_kp"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:genetics_kp"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:genetics_kp",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        }, 		
+        },
 
-        ## Scoring/Context Edges -  Literature Co-Occurrence 
+       ## Scoring/Context Edges -  Literature Co-Occurrence 
         "E_10": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:occurs_together_in_literature_with",
           "object": "asthma",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn-ranker-ara",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        }, 	
+        },
         "E_11": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:occurs_together_in_literature_with",
           "object": "ERVK2",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn-ranker-ara",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        }, 			
+        },
         "E_12": {
-          "subject": "neratinib"
+          "subject": "neratinib",
           "predicate": "biolink:occurs_together_in_literature_with",
           "object": "Tyr Kinase",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "computational model",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:aragorn-ranker-ara"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn-ranker-ara",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        }, 	
-
-        ## Scoring/Context Edges -  Answer Coalescence  
+        },
         "E_13": {
-          "subject": "benralizumab"
+          "subject": "benralizumab",
           "predicate": "biolink:inhibits",
           "object": "Tyr Kinase",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        }, 	
+        },
+
+       ## Scoring/Context Edges -  Answer Coalescence 
         "E_14": {
-          "subject": "erlotinib"
+          "subject": "erlotinib",
           "predicate": "biolink:inhibits",
           "object": "Tyr Kinase",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        }, 
+        },
         "E_15": {
-          "subject": "neratinib"
+          "subject": "neratinib",
           "predicate": "biolink:inhibits",
           "object": "Tyr Kinase",
           "attributes": [
-	    {
+            {
               "attribute_type_id": "biolink:agent_type",
               "value": "manual",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:knowledge_level",
               "value": "knowledge_assertion",
               "attribute_source": "infores:drugbank"
             },
-	    {
+            {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:drugbank",
               "attribute_source": "infores:aragorn"
             },
-	    {
+            {
               "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
               "attribute_source": "infores:aragorn"
             }
           ]
-        }		
-      },	  
-      "nodes": {
-            . . . Don't really need to show these explicitly to illustrate proposal
+        }
+      },
+      "nodes": {              #. . . Don't really need to show these explicitly to illustrate proposal: null
       }
     },
-
-    "support_graphs": [    # Named graphs that group edges from the KGraph into collections we want to reference as a unit from an Answer Edge (as evidence supporting that Edge), or from a Result (as support for a score)
-	  {
-	     "id": "ng_p01",
-	     "edges": [
-           {
-             "id": "E_02"
-           }
-	    ]
-	  },
-	  {
-	     "id": "ng_p02",
-	     "edges": [
-           {
-             "id": "E_03"
-           },
-           {
-             "id": "E_04"
-           },
-           {
-             "id": "E_05"
-           }
-	    ]
-	  },
-	  {
-	     "id": "ng_p03",
-	     "edges": [
-           {
-             "id": "E_06"
-           },
-           {
-             "id": "E_07"
-           }
-	    ]
-	  },
-	  {
-	     "id": "ng_p04",
-	     "edges": [
-           {
-             "id": "E_08"
-           },
-           {
-             "id": "E_09"
-           }
-	    ]
-	  },
-	  {
-	     "id": "ng_g01",
-	     "edges": [
-           {
-             "id": "E_10"
-           },
-           {
-             "id": "E_11"
-           },
-           {
-             "id": "E_12"
-           }
-	    ]
-	  },
-	  {
-	     "id": "ng_g02",
-	     "edges": [
-           {
-             "id": "E_13"
-           },
-           {
-             "id": "E_14"
-           },
-           {
-             "id": "E_15"
-           }
-	    ]
-	  }
-	]
-	
+    "support_graphs": [       # Named graphs that group edges from the KGraph into collections we want to reference as a unit from an Answer Edge (as evidence supporting that Edge), or from a Result (as support for a score)
+      {
+        "id": "ng_p01",
+        "edges": [
+          {
+            "id": "E_02"
+          }
+        ]
+      },
+      {
+        "id": "ng_p02",
+        "edges": [
+          {
+            "id": "E_03"
+          },
+          {
+            "id": "E_04"
+          },
+          {
+            "id": "E_05"
+          }
+        ]
+      },
+      {
+        "id": "ng_p03",
+        "edges": [
+          {
+            "id": "E_06"
+          },
+          {
+            "id": "E_07"
+          }
+        ]
+      },
+      {
+        "id": "ng_p04",
+        "edges": [
+          {
+            "id": "E_08"
+          },
+          {
+            "id": "E_09"
+          }
+        ]
+      },
+      {
+        "id": "ng_g01",
+        "edges": [
+          {
+            "id": "E_10"
+          },
+          {
+            "id": "E_11"
+          },
+          {
+            "id": "E_12"
+          }
+        ]
+      },
+      {
+        "id": "ng_g02",
+        "edges": [
+          {
+            "id": "E_13"
+          },
+          {
+            "id": "E_14"
+          },
+          {
+            "id": "E_15"
+          }
+        ]
+      }
+    ],
     "results": [
       {
         "essence": "BENRALIZUMAB",
@@ -576,44 +574,46 @@
         "node_bindings": {
           "n0": [
             {
-              "id": "CHEMBL:1742991"   # benralizumab
+              "id": "CHEMBL:1742991"        # benralizumab
             }
           ],
           "n1": [
             {
-              "id": "MONDO:0004979"    # asthma
+              "id": "MONDO:0004979"         # asthma
             }
           ]
         },
-	"scores": [
-		{
-          "reasoner_id": "ARAGORN",
-          "score": 1.9,
-	  "scoring_method": "ARAGORN Scoring Algorhitm 1",
-	  "support_graphs": ["ng_g01", "ng_g02"]
-          "edge_bindings": {                             
-            "e0": [
-              {
-                "id": "E_00"
-              },
-              {
-                "id": "E_01"
-              }			
-            ]
-           }
-	 } 
-       ]   
-     }
-  "reasoner_id": "ARAGORN",
-  "schema_version": "1.3.0",
-  "status": "OK",
-  "submitter": "submitter",
-  "total_results_count": 1,
-  "type": "translator_reasoner_response"
+        "scores": [
+          {
+            "reasoner_id": "ARAGORN",
+            "score": 1.9,
+            "scoring_method": "ARAGORN Scoring Algorhitm 1",
+            "support_graphs": [
+              "ng_g01",
+              "ng_g02"
+            ],
+            "edge_bindings": {
+              "e0": [
+                {
+                  "id": "E_00"
+                },
+                {
+                  "id": "E_01"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "reasoner_id": "ARAGORN",
+    "schema_version": "1.3.0",
+    "status": "OK",
+    "submitter": "submitter",
+    "total_results_count": 1,
+    "type": "translator_reasoner_response"
   }
 }
-
-
 
 ## Message sent from ARAX to the ARS
 
