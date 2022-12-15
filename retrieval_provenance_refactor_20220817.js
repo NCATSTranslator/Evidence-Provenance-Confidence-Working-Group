@@ -28,7 +28,7 @@
         "attribute_source": ["infores:KP_1"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KS_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:KP_1"]
@@ -42,7 +42,7 @@
         "attribute_source": ["infores:KP_2"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KS_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:KP_2"]
@@ -56,7 +56,7 @@
         "attribute_source": ["infores:KP_3"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KS_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:KP_3"]
@@ -70,13 +70,13 @@
         "attribute_source": ["infores:ARA_1"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KP_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:ARA_1"]
            },
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KP_2",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:ARA_1"]
@@ -90,13 +90,13 @@
         "attribute_source": ["infores:ARA_2"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KP_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:ARA_2"]
            },
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KP_3",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:ARA_2"]
@@ -110,13 +110,13 @@
         "attribute_source": ["infores:WR"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:ARA_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:WR"]
            },
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:ARA_2",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:WR"]
@@ -176,7 +176,7 @@
         "attribute_source": ["infores:ARA_1"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KP_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:ARA_1"]
@@ -190,7 +190,7 @@
         "attribute_source": ["infores:ARA_2"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:KP_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:ARA_2"]
@@ -204,7 +204,7 @@
         "attribute_source": ["infores:WR"]
         "attributes": [
            {
-             "attribute_type_id": "previous_source",
+             "attribute_type_id": "previous_knowledge_source",
              "value": "infores:ARA_1",
              "value_type_id": "biolink:InformationResource",
              "attribute_source": ["infores:WR"]
