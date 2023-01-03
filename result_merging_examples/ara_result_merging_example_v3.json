@@ -338,12 +338,12 @@
       "nodes": {                # Omitted - not necessary to illustrate proposal
       }
     },
-    "auxiliary_graphs": {       # Named graphs that group subsets of edges from the KGraph into graph objects that are referenced from an Answer Edge (as evidence/explanation supporting that Edge), or from a Result (as information used to generate a score)
+    "auxiliary_graphs": {       # Named graphs that group subsets of edges from the KGraph into graph objects that can be referenced from an Answer Edge (as evidence/explanation supporting that Edge), or from a Result (as information used to generate a score)
       "ng_01": {
         "edges": [
           "E_02"
         ],
-        "attributes": []       # Consider the idea of creating a slot or attribute to indicate the role played by each named graph - e.g. 'evidence graph', 'scoring support graph', 'answer coalescence graph', etc. And/or using attributes to connect each graph to the rule/method that defined it.
+        "attributes": []        # Consider the idea of creating a slot or attribute to indicate the role played by each named graph - e.g. 'evidence graph', 'scoring support graph', 'answer coalescence graph', etc. And/or using attributes to connect each graph to the rule/method that defined it.
       },
       "ng_02": {
         "edges": [
@@ -723,7 +723,7 @@
         }
       },
 	  
-	 ## QUESTION for ARAX: What else does ARAX add to a support graph?
+	 ## QUESTION for ARAX: What else, if anything, does ARAX add to a support graph?
 	  
       "nodes": {              # Not shown, as not necessary to illustrate proposal
       }
@@ -1477,7 +1477,7 @@
           {
             "reasoner_id": "ARS",     # This analysis object reports the final score assigned by the ARS / O&O, along with provenance information
             "score": 0.93,
-            "scoring_method": "ARS Scoring Algorhitm 1",
+            "scoring_method": "ARS O & O Scoring Algorhitm 1",
             "support_graphs": [
                     ## Reference any edges/graphs  used by O & O in scoring the final Result here 
             ],
