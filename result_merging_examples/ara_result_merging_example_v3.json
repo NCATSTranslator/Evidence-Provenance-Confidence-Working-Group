@@ -75,8 +75,13 @@
           "attributes": [
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
+              "value": "infores:aragorn_predictinator",
+              "attribute_source": "infores:aragorn"
+            },
+            {
+              "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
-              "attribute_source": "infores:aragorn_predictinator"
+              "attribute_source": "infores:aragorn"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
@@ -506,8 +511,13 @@
           "attributes": [
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
+              "value": "infores:arax_treat-o-matic",
+              "attribute_source": "infores:arax"
+            },
+            {
+              "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:arax",
-              "attribute_source": "infores:arax_treat-o-matic"
+              "attribute_source": "infores:arax"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
@@ -881,8 +891,13 @@
           "attributes": [
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
+              "value": "infores:aragorn_predictinator",
+              "attribute_source": "infores:aragorn"
+            },
+            {
+              "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:aragorn",
-              "attribute_source": "infores:aragorn_predictinator"
+              "attribute_source": "infores:aragorn"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
@@ -903,8 +918,13 @@
           "attributes": [
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
+              "value": "infores:arax_treat-o-matic",
+              "attribute_source": "infores:arax"
+            },
+            {
+              "attribute_type_id": "biolink:aggregator_knowledge_source",
               "value": "infores:arax",
-              "attribute_source": "infores:arax_treat-o-matic"
+              "attribute_source": "infores:arax"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
@@ -1506,3 +1526,94 @@
     "type": "translator_reasoner_response"
   }
 }
+
+
+
+
+
+
+## --------------------------------------------------------------------------------------------------------------- ##
+
+# Alternate representation of the Answer edges in the aggregated KGraph sent form the ARS to the UI, 
+# where we consider ARAs as reasoning tools that can geenrate new knwoeldge through implementation of CM algorithms,
+# and be the 'primary source' of answer edges in a TRAPI KGraph. 
+
+
+    "knowledge_graph": {
+      "edges": {
+      
+       ## Answer Edges (assertions or predictions that topologically match the query)
+	   
+        "E_00_16": {              # This assertion from DrugBank was an edge in the results from ARAGORN (E_00) and ARAX (E_16), and thus gets merged here in the ARS message to the UI (note the attributes asserting ARAGORN and ARAX as aggregator knowledge sources). 
+          "subject": "Benralizumab",
+          "predicate": "biolink:treats",
+          "object": "asthma",
+          "attributes": [
+            {
+              "attribute_type_id": "biolink:primary_knowledge_source",
+              "value": "infores:drugbank",
+              "attribute_source": "infores:molepro"
+            },
+            {
+              "attribute_type_id": "biolink:aggregator_knowledge_source",
+              "value": "infores:aragorn",
+              "attribute_source": "infores:aragorn"
+            },
+		    {   
+              "attribute_type_id": "biolink:aggregator_knowledge_source",
+              "value": "infores:arax",
+              "attribute_source": "infores:arax"
+            }
+          ]
+        },
+        "E_01": {
+          "subject": "benralizumab",
+          "predicate": "biolink:treats",
+          "object": "asthma",
+          "attributes": [
+            {
+              "attribute_type_id": "biolink:primary_knowledge_source",
+              "value": "infores:aragorn",
+              "attribute_source": "infores:aragorn"
+            },
+            {
+              "attribute_type_id": "biolink:supporting_method",
+              "value": "aragorn_predictinator",
+              "attribute_source": "infores:aragorn"
+            },
+            {
+              "attribute_type_id": "biolink:support_graphs",
+              "value": [
+                "ng_01",
+                "ng_02",
+                "ng_03",
+                "ng_04"
+              ],
+              "attribute_source": "infores:aragorn"
+            }
+          ]
+        },
+        "E_17": {
+          "subject": "benralizumab",
+          "predicate": "biolink:treats",
+          "object": "asthma",
+          "attributes": [
+            {
+              "attribute_type_id": "biolink:primary_knowledge_source",
+              "value": "infores:arax",
+              "attribute_source": "infores:arax"
+            },
+            {
+              "attribute_type_id": "biolink:supporting_method",
+              "value": "infores:arax_treat-o-matic",
+              "attribute_source": "infores:arax"
+            },
+            {
+              "attribute_type_id": "biolink:support_graphs",
+              "value": [
+                "ng_07"
+              ],
+              "attribute_source": "infores:arax"
+            }
+          ]
+        },
