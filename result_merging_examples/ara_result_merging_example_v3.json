@@ -76,7 +76,7 @@
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn",
-              "attribute_source": "infores:aragorn"
+              "attribute_source": "infores:aragorn_predictinator"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
@@ -86,7 +86,7 @@
                 "ng_03",
                 "ng_04"
               ],
-              "attribute_source": "infores:aragorn"
+              "attribute_source": "infores:aragorn_predictinator"
             }
           ]
         },
@@ -507,14 +507,14 @@
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:arax",
-              "attribute_source": "infores:arax"
+              "attribute_source": "infores:arax_treat-o-matic"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
               "value": [
                 "ng_07"
               ],
-              "attribute_source": "infores:arax"
+              "attribute_source": "infores:arax_treat-o-matic"
             }
           ]
         },
@@ -882,7 +882,7 @@
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:aragorn",
-              "attribute_source": "infores:aragorn"
+              "attribute_source": "infores:aragorn_predictinator"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
@@ -892,7 +892,7 @@
                 "ng_03",
                 "ng_04"
               ],
-              "attribute_source": "infores:aragorn"
+              "attribute_source": "infores:aragorn_predictinator"
             }
           ]
         },
@@ -904,14 +904,14 @@
             {
               "attribute_type_id": "biolink:primary_knowledge_source",
               "value": "infores:arax",
-              "attribute_source": "infores:arax"
+              "attribute_source": "infores:arax_treat-o-matic"
             },
             {
               "attribute_type_id": "biolink:support_graphs",
               "value": [
                 "ng_07"
               ],
-              "attribute_source": "infores:arax"
+              "attribute_source": "infores:arax_treat-o-matic"
             }
           ]
         },
@@ -1445,13 +1445,13 @@
               "ng_05",
               "ng_06"
             ],
-            "edge_bindings": {
+            "edge_bindings": {  # Indicates the specific answer edges that were scored by this reasoner 
               "e0": [
                 {
-                  "id": "E_00_16"
+                  "id": "E_00_16"   # The Drugbank Assertion
                 },
                 {
-                  "id": "E_01"
+                  "id": "E_01"      # The ARAGORN CM Tool Prediction
                 }
               ]
             }
@@ -1466,10 +1466,10 @@
             "edge_bindings": {
               "e0": [
                 {
-                  "id": "E_00_16"
+                  "id": "E_00_16"   # The Drugbank Assertion
                 },
                 {
-                  "id": "E_17"
+                  "id": "E_17"      # The ARAX CM Tool Prediction
                 }
               ]
             }
@@ -1484,13 +1484,13 @@
             "edge_bindings": {  This is where the message tells the UI about three separate assertions that gave this Benralizumab result - allowing the UI to separately present/interrogate the specific evidence/provenance for each assertion.
               "e0": [
                 {
-                  "id": "E_00_16"     # Drugbank's manual assertion
+                  "id": "E_00_16"     # The Drugbank Assertion
                 },
                 {
-                  "id": "E_01"        # ARAGORN's creative mode prediction
+                  "id": "E_01"        # The ARAGORN CM Tool Prediction
                 },
                 {
-                  "id": "E_17"        # ARAX's creative mode prediction
+                  "id": "E_17"        # The ARAX CM Tool Prediction
                 }				
               ]
             }
