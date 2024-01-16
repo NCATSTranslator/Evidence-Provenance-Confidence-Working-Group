@@ -1,0 +1,48 @@
+# Publication example
+# Scenario: MolePro retrieves an edge asserting Baclofen to treat Cerebral Palsy from Chembl, and wants to provide additional metadata about a specific supporting publication referenced by Chembl
+
+  "Edge001": {             
+    "subject": "pubchem:2284",               # Baclofen
+    "predicate": "biolink:treats",
+    "object": "MONDO:0006497",               # Cerebral Palsy
+	  "attributes": [
+	    {
+      "attribute_type_id": "biolink:publications",   
+      "value": ["PMID: 26563961"],                         
+      "value_type_id": "linkml:Uriorcurie",
+      "attribute_source": "infores:chembl",
+	    "attributes": [
+	      {
+        "attribute_type_id": "biolink:publication_type",   
+        "value": ["fabio:ReviewPaper"],            # term from the SPAR FaBiO ontology            
+        "value_type_id": "linkml:Uriorcurie",
+        "attribute_source": "infores:molepro"
+        },
+	      {
+        "attribute_type_id": "biolink:name",   
+        "value": "Intrathecal baclofen for treating spasticity in children with cerebral palsy",
+        "value_type_id": "linkml:String",
+        "attribute_source": "infores:molepro"
+        },
+        {
+        "attribute_type_id": "biolink:creation_date",   
+        "value": "2015-11-13",
+        "value_type_id": "linkml:Date",
+        "attribute_source": "infores:molepro"
+        },
+        {
+        "attribute_type_id": "biolink:authors",   
+        "value": ["Hasnat, Monika J", "Rice, James E"],     # ORCIDs not provided in this case, so names provided (last name first)
+        "value_type_id": "linkml:String",
+        "attribute_source": "infores:molepro"
+        },
+        {
+        "attribute_type_id": "biolink:mesh_terms",   
+        "value": ["MESH:68000293", "MESH:68002648", "MESH:68001418"]      # MeSH codes for "Adolescent", "Child", "Baclofen"
+        "value_type_id": "linkml:Uriorcurie",
+        "attribute_source": "infores:molepro"
+        }
+      ]
+    }
+  ]
+}
