@@ -1,0 +1,48 @@
+# Supporting Methods Metadata Example (direct on edge)
+# Scenario: Multiomics BigGIM KP reports a data-derived correlation between expression of two genes based on TCGA expression datasets, and wants to describe the types of methods used to measure gene expression and derive statistical measures by directly attaching this info to the correlation Edge.  
+
+  "Edge001": {        	 
+    "subject": "NCBIGene:1019",                          # CDK4
+    "subject_aspect_qualifier": "expression",
+    "predicate": "biolink:positively_correlated_with",
+    "object": "NCBIGene:1499",           	                # CTNNB1
+    "object_aspect_qualifier": "expression", 
+    "object_context_qualifier": "UBERON:0002107",        # Liver     
+    "sources": [                                  # array of TRAPI RetrievalSource objects
+ 	    {
+      "resource_id": "infores:biggim",            # BigGIM wiki page in Infores Catalog will have a full methodological description of how knowledge expressed in edges is generated.
+  	  "resource_role": "primary_knowledge_source",
+  	  "source_record_urls": null,
+  	  "upstream_resource_ids": ["infores:biggim"]
+ 	    },
+ 	    {
+  	  "resource_id": "infores:tcga",              # TCGA infores wiki page will provide or link out to a description of methods used to generated data
+  	  "resource_role": "supporting_data_source",
+  	  "source_record_urls": null,
+  	  "upstream_resource_ids": []
+ 	    }
+    ],
+    "attributes": [                              # array of TRPAI Attribute objects
+      {
+  	  "attribute_type_id": "biolink:study_study_method_type",   
+  	  "value": ["OBI:0001271", "OBI:0200115”],    # RNA-seq assay, Pearson corr. coeff. calc.               
+  	  "value_type_id": "linkml:Uriorcurie",
+  	  "attribute_source": "infores:tcga"
+      },
+      {
+    	"attribute_type_id": "biolink:supporting_study_description",   
+    	"value":[ 
+              "https://www.cancer.gov/ccg/research/structural-genomics/tcga/using-tcga-data/technology/illumina-gaiix-data-sheet",   # RNASeq User Guide url
+              "PMID:28232861"                                                                                                        # TCGA Workflow publication
+      ]      	 
+      "value_type_id": "linkml:Uriorcurie",
+    	"attribute_source": "infores:biggim"
+    	},
+    	{
+    	"attribute_type_id": "ex:knowledge_generation_method_description",   # bespoke key (KPs would need to create their own key if they wanted to provide links to documentation of the methodology used to generate knowledge expressed in BIgGIM edges)
+    	"value": ["https://github.com/NCATSTranslator/Translator-All/wiki/Big-GIM-I"],
+    	"value_type_id": "linkml:Uriorcurie",
+    	"attribute_source": "infores:biggim"
+    	}
+    ]
+  }
