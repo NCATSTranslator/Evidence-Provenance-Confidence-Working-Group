@@ -14,13 +14,13 @@
   	  "resource_role": "primary_knowledge_source",
   	  "source_record_urls": null,
   	  "upstream_resource_ids": ["infores:biggim"]
- 	    },
- 	    {
+      },
+      {
   	  "resource_id": "infores:tcga",              # TCGA infores wiki page will provide or link out to a description of methods used to generated data
-  	  "resource_role": "supporting_data_source",
-  	  "source_record_urls": null,
+      "resource_role": "supporting_data_source",
+      "source_record_urls": null,
   	  "upstream_resource_ids": []
- 	    }
+      }
     ],
     "attributes": [                              # array of TRPAI Attribute objects
       {
@@ -30,19 +30,19 @@
   	  "attribute_source": "infores:tcga"
       },
       {
-    	"attribute_type_id": "biolink:supporting_study_description",   
-    	"value":[ 
+      "attribute_type_id": "biolink:supporting_study_description",   
+      "value":[ 
               "https://www.cancer.gov/ccg/research/structural-genomics/tcga/using-tcga-data/technology/illumina-gaiix-data-sheet",   # RNASeq User Guide url
               "PMID:28232861"                                                                                                        # TCGA Workflow publication
-      ]      	 
+        ]      	 
       "value_type_id": "linkml:Uriorcurie",
-    	"attribute_source": "infores:biggim"
-    	},
-    	{
-    	"attribute_type_id": "ex:knowledge_generation_method_description",   # bespoke key (KPs would need to create their own key if they wanted to provide links to documentation of the methodology used to generate knowledge expressed in BIgGIM edges)
-    	"value": ["https://github.com/NCATSTranslator/Translator-All/wiki/Big-GIM-I"],
-    	"value_type_id": "linkml:Uriorcurie",
-    	"attribute_source": "infores:biggim"
-    	}
+      "attribute_source": "infores:biggim"
+      },
+      {
+      "attribute_type_id": "ex:knowledge_generation_method_description",   # bespoke key (KPs would need to create their own key if they wanted to provide links to documentation of the methodology used to generate knowledge expressed in BIgGIM edges)
+      "value": ["https://github.com/NCATSTranslator/Translator-All/wiki/Big-GIM-I"],
+      "value_type_id": "linkml:Uriorcurie",
+      "attribute_source": "infores:biggim"
+      }
     ]
   }
