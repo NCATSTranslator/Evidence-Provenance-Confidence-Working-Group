@@ -2,14 +2,14 @@
 # Scenario: Multiomics BigGIM KP reports a data-derived correlation between expression of two genes based on TCGA expression datasets, and wants to describe the types of methods used to measure gene expression and derive statistical measures by directly attaching this info to the correlation Edge.  
 
   "Edge001": {        	 
-    "subject": "NCBIGene:1019",                          # CDK4
+    "subject": "NCBIGene:1019",                           # CDK4
     "subject_aspect_qualifier": "expression",
     "predicate": "biolink:positively_correlated_with",
     "object": "NCBIGene:1499",           	                # CTNNB1
     "object_aspect_qualifier": "expression", 
-    "object_context_qualifier": "UBERON:0002107",        # Liver     
+    "object_context_qualifier": "UBERON:0002107",         # Liver     
     "sources": [                                  # array of TRAPI RetrievalSource objects
- 	    {
+      {
       "resource_id": "infores:biggim",            # BigGIM wiki page in Infores Catalog will have a full methodological description of how knowledge expressed in edges is generated.
   	  "resource_role": "primary_knowledge_source",
   	  "source_record_urls": null,
