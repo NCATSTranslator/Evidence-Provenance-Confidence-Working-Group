@@ -1,7 +1,7 @@
 # Supporting Methods Metadata Example (contained in StudyResult object)
 # Scenario: Multiomics Clinical Risk KP generates statistical association edges betweeen variables in their EHR datasets, and wants to organize supporting statistical measures with metadata about the methods that generated them 
 # Example Source:  (https://biothings.ncats.io/multiomics_ehr_risk_kp/query?q=subject.id:CHEBI\:601027)
-# Example includes one complete StudyRsult object, carrying data from one analysis supporting the edge.  
+# Example includes one complete StudyResult object, carrying data from one analysis supporting the edge.  
 # The first two nested attributes report supporting study method type, and a link to an external url with a more detailed description.
 
  "Edge001": {             
@@ -22,12 +22,12 @@
   	  "upstream_resource_ids": [ ]
       }
     ],
-  "attributes": [     # array of TRAPI Attribute objects
+  "attributes": [     # array of TRAPI Attribute objects, starting with the StudyResult
     {
     "attribute_type_id": "biolink:has_supporting_study_result",
-     "value": "StudyResult001"             # KP can make up an identifier for this object jsut ot fill the required value slot
+     "value": "StudyResult001"            # KP can make up an internal identifier for this object in order to populate the required value slot
      "description": "A StudyResult object grouping data supporting this edge and metadata about the study used to generate it."
-     "attributes": [
+     "attributes": [  # nested list of Attributes contained by the StudyResult object above, describing data it reports, and its provenance information
        {
        "attribute_type_id": "biolink:supporting_study_method_type",    
        "value": ["STATO:0000149"],
